@@ -1,0 +1,17 @@
+Parameter,Median,HDI,% in ROPE,MPE,Rhat,ESS
+Intercept,0.18,"[-0.43, 0.81]",0.22,0.72,1,11077
+LexTALE,-0.02,"[-0.30, 0.25]",0.55,0.56,1,3013
+EQ,0.24,"[-0.03, 0.50]",0.13,0.96,1,3071
+Absolute interrogative,-0.76,"[-1.17, -0.34]",0,1,1,3326
+Caribbean,0.07,"[-0.52, 0.66]",0.27,0.6,1,9850
+LexTALE:EQ,0.04,"[-0.22, 0.31]",0.55,0.63,1,3830
+LexTALE:Absolute interrogative,-0.13,"[-0.47, 0.20]",0.36,0.79,1,3026
+EQ:Absolute interrogative,-0.03,"[-0.34, 0.29]",0.49,0.57,1,3074
+LexTALE:Caribbean,-0.13,"[-0.33, 0.08]",0.36,0.9,1,7446
+EQ:Caribbean,-0.13,"[-0.34, 0.09]",0.36,0.9,1,6963
+Absolute interrogative:Caribbean,-1.83,"[-2.37, -1.28]",0,1,1,2323
+LexTALE:EQ:Absolute interrogative,0.17,"[-0.15, 0.49]",0.31,0.85,1,4148
+LexTALE:EQ:Caribbean,0.06,"[-0.15, 0.26]",0.64,0.71,1,7219
+LexTALE:Absolute interrogative:Caribbean,0.5,"[0.26, 0.74]",0,1,1,8743
+EQ:Absolute interrogative:Caribbean,-0.09,"[-0.32, 0.14]",0.51,0.78,1,9215
+LexTALE:EQ:Absolute interrogative:Caribbean,-0.31,"[-0.56, -0.07]",0.02,0.99,1,9028

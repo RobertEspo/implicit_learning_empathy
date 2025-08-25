@@ -1,0 +1,9 @@
+Parameter,Median,HDI,% in ROPE,MPE,Rhat,ESS
+Intercept,-0.27,"[-0.98, 0.40]",0.19,0.79,1.00,2273
+LexTALE,0.24,"[-0.06, 0.51]",0.15,0.95,1.00,2725
+Empathy quotient,0.03,"[-0.24, 0.28]",0.57,0.58,1.00,2360
+Experimental group,0.20,"[-0.13, 0.52]",0.25,0.88,1.00,2286
+LexTALE:EQ,0.00,"[-0.32, 0.33]",0.48,0.51,1.00,3013
+LexTALE:Experimental group,-0.01,"[-0.34, 0.31]",0.48,0.53,1.00,2635
+EQ:Experimental group,-0.02,"[-0.35, 0.30]",0.47,0.55,1.00,2413
+LexTALE:EQ:Experimental group,0.21,"[-0.15, 0.57]",0.25,0.88,1.00,3047

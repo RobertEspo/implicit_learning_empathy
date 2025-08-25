@@ -1,0 +1,3 @@
+Parameter,Median,HDI,% in ROPE,MPE,Rhat,ESS
+Intercept,0.33,"[-1.37, 2.07]",0.09,0.65,1.00,7689
+Experimental group,-0.05,"[-2.50, 2.34]",0.07,0.52,1.00,8582

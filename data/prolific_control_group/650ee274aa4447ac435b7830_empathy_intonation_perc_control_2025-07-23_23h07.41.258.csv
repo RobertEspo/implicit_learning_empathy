@@ -1,0 +1,8 @@
+﻿instructions_2afc.started,instructions_2afc.stopped,instructions_2afc_loop.thisRepN,instructions_2afc_loop.thisTrialN,instructions_2afc_loop.thisN,instructions_2afc_loop.thisIndex,instructions_2afc_loop.ran,instructions_text,continue_text,participant_id,"What variety of Spanish are you most familiar with? (e.g., Peruvian, Spanish, Mexican)",At what age did you begin learning Spanish?,Are you proficient in any languages other than English/Spanish?,"Are you familiar with Caribbean (e.g., Caribbean, Puerto Rican) or Galician Spanish?",date,expName,psychopyVersion,OS,frameRate,id,study_id,session
+0.0131,3.6957,0,0,0,0,1,"In the following task you are going to hear a series of utterances. 
+
+  You will decide if the utterances sound like questions or not using your keyboard.", (press the spacebar to continue),650ee274aa4447ac435b7830,Spanish,13 or older,"no, only English or Spanish",no,2025-07-23_23h07.41.258,empathy_intonation_perc_control,2024.2.4,Win32,142.8571429,650ee274aa4447ac435b7830,68817205a84113384fffdfe3,6881a362960cdc3ea57abf8e
+3.6968,4.2858,0,1,1,1,1,"If you believe the utterance is a question, type '1' (for 'yes') and if you do not 
+  believe it is a question type '0' (for 'no').
+
+  Let's practice a bit...", (press the spacebar to continue),650ee274aa4447ac435b7830,Spanish,13 or older,"no, only English or Spanish",no,2025-07-23_23h07.41.258,empathy_intonation_perc_control,2024.2.4,Win32,142.8571429,650ee274aa4447ac435b7830,68817205a84113384fffdfe3,6881a362960cdc3ea57abf8e

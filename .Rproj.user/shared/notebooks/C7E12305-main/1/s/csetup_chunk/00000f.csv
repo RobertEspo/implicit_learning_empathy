@@ -1,0 +1,101 @@
+"0","#| label: setup"
+"0","#| include: false"
+"0",""
+"0","# Set document defaults"
+"0","knitr::opts_chunk$set("
+"0","  cache.extra = knitr::rand_seed, "
+"0","  fig.retina = 2, "
+"0","  echo = F, "
+"0","  message = F, "
+"0","  warning = F,"
+"0","  fig.asp = 0.5625,"
+"0","  out.width = ""100%"","
+"0","  dpi = 300, "
+"0","  fig.path = 'figs/', "
+"0","  dev = c(""png"", ""pdf"")"
+"0","  )"
+"0",""
+"0","source(here::here(""scripts"",""r"",""01_helpers.R""))"
+"0","source(here::here(""scripts"",""r"",""02_load_data.R""))"
+"2","[1mRows: [22m[34m2[39m [1mColumns: [22m[34m7[39m
+"
+"2","[36m──[39m [1mColumn specification[22m [36m────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (2): Parameter, HDI
+[32mdbl[39m (5): Median, % in ROPE, MPE, Rhat, ESS
+"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
+"2","[1mRows: [22m[34m2[39m [1mColumns: [22m[34m7[39m
+"
+"2","[36m──[39m [1mColumn specification[22m [36m────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (2): Parameter, HDI
+[32mdbl[39m (5): Median, % in ROPE, MPE, Rhat, ESS
+"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
+"2","[1mRows: [22m[34m16[39m [1mColumns: [22m[34m7[39m
+"
+"2","[36m──[39m [1mColumn specification[22m [36m────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (2): Parameter, HDI
+[32mdbl[39m (5): Median, % in ROPE, MPE, Rhat, ESS
+"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
+"2","[1mRows: [22m[34m8[39m [1mColumns: [22m[34m7[39m
+"
+"2","[36m──[39m [1mColumn specification[22m [36m────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (2): Parameter, HDI
+[32mdbl[39m (5): Median, % in ROPE, MPE, Rhat, ESS
+"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
+"2","[1mRows: [22m[34m24992[39m [1mColumns: [22m[34m17[39m
+"
+"2","[36m──[39m [1mColumn specification[22m [36m────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (8): participant_id, speaker_variety, sentence_type, sentence, familiar_with_fal...
+[32mdbl[39m (9): group, correct, rt_raw, rt_adj, eq_score, exp_time, lextale_avg, lextale_tr...
+"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
+"0","source(here(""scripts"",""r"",""10_manuscript_stats.R""))"
+"2","[38;5;232m`summarise()` has grouped output by 'group'. You can override using the `.groups`
+argument.[39m
+"
+"2","[38;5;232m`summarise()` has grouped output by 'group'. You can override using the `.groups`
+argument.[39m
+"
+"2","G2;H2;Warningh: [38;5;232mThere was 1 warning in `mutate()`.[39m
+[38;5;232m[36mℹ[38;5;232m In argument: `across(-c(""Parameter""), specify_decimal, k = 2)`.[39m
+Caused by warning:
+[38;5;232m[33m![38;5;232m The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+Supply arguments directly to `.fns` through an anonymous function instead.
+
+  # Previously
+  across(a:b, mean, na.rm = TRUE)
+
+  # Now
+  across(a:b, \(x) mean(x, na.rm = TRUE))
+[90mThis warning is displayed once every 8 hours.[38;5;232m
+[90mCall `lifecycle::last_lifecycle_]8;;ide:run:warnings()warnings()]8;;` to see where this warning was generated.[38;5;232m[39mg
+"
+"2","G1;H1;Error during wrapuph: not that many frames on the stack
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+g"
+"2","G1;H1;Error during wrapuph: not that many frames on the stack
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+g"
