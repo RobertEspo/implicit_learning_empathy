@@ -1,4 +1,8 @@
 ###
+m_rq1_post <- 
+###
+
+###
 # rq1
 ###
 
@@ -214,6 +218,18 @@ rq_1_eq_by_utterance_type <- plot(eq_st_me, plot = FALSE, line_args = list(size 
 ggsave(
   filename = here::here("figs", "rq_1_eq_by_utterance_type.png"),
   plot = rq_1_eq_by_utterance_type,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+# patchwork eq ~ lextale
+
+rq1_eq_lextale_patchwork <- rq_1_lextale_by_utterance_type + rq_1_eq_by_utterance_type
+
+ggsave(
+  filename = here::here("figs", "rq1_eq_lextale_patchwork.png"),
+  plot = rq1_eq_lextale_patchwork,
   width = 8,
   height = 6,
   dpi = 300
@@ -465,6 +481,20 @@ ggsave(
 
 ###
 
+# patchwork eq ~ lextale
+
+rq2_eq_lextale_patchwork <- rq_2_lextale_by_group + rq_2_eq_by_group
+
+ggsave(
+  filename = here::here("figs", "rq2_eq_lextale_patchwork.png"),
+  plot = rq2_eq_lextale_patchwork,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+###
+
 # accuracy by group * eq * lextale
 
 facet_replace_3way <- tibble(
@@ -530,6 +560,7 @@ ggsave(
 )
 
 ### experimental lextale X eq interaction
+
 exp_lex_eq_slopes_eq_lextale <- m_rq2_post %>% 
   transmute(
     slope_neg1 = b_lextale_std + `b_lextale_std:eq_std` * (-1) + `b_lextale_std:group1` + `b_lextale_std:eq_std:group1` * (-1),
