@@ -1,7 +1,1 @@
-intro
-
-l2 intonation acquisition
-> can definitely cut this down a lot, don't need full paragraphs to describe all studies. explain that L% y/n q is hard for L1 English L2 Spanish (with some citations) & then explain best study.
-> include bedialuauneta fully?
-
-l2 intonation in language classroom
+Need to take a better look at the LexTALE and empathy models and report those as descriptive stats instead of just mean/sd etc.
