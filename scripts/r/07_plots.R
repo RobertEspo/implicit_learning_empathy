@@ -103,6 +103,15 @@ m_rq1_forest <- as_tibble(m_rq1) %>%
   scale_y_discrete(limits = rev) + 
   theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
 
+ggsave(
+  filename = here::here("figs", "m_rq1_forest.png"),
+  plot = m_rq1_forest,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+
 ###
 
 # accuracy by speaker variety * sentence type * lextale
@@ -150,6 +159,14 @@ rq_1_lextale_by_utterance_type <- plot(lt_st_me, plot = FALSE, line_args = list(
   ) +
   guides(color = guide_legend(override.aes = list(fill = NA, size = 2)))
 
+ggsave(
+  filename = here::here("figs", "rq_1_lextale_by_utterance_type.png"),
+  plot = rq_1_lextale_by_utterance_type,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
 ###
 
 # accuracy by speaker variety * sentence type * eq
@@ -193,6 +210,14 @@ rq_1_eq_by_utterance_type <- plot(eq_st_me, plot = FALSE, line_args = list(size 
     legend.text.align = 0.5
   ) +
   guides(color = guide_legend(override.aes = list(fill = NA, size = 2)))
+
+ggsave(
+  filename = here::here("figs", "rq_1_eq_by_utterance_type.png"),
+  plot = rq_1_eq_by_utterance_type,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
 
 ###
 
@@ -261,6 +286,14 @@ rq1_3way <- plot(lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] +
     legend.title = element_text(size = 10, color = "grey45"),
     strip.background = element_blank()
   )
+
+ggsave(
+  filename = here::here("figs", "rq1_3way.png"),
+  plot = rq1_3way,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
 
 ################################################################################
 ###
@@ -332,6 +365,14 @@ m_rq2_forest <- as_tibble(m_rq2) %>%
   scale_y_discrete(limits = rev) + 
   theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
 
+ggsave(
+  filename = here::here("figs", "m_rq2_forest.png"),
+  plot = m_rq2_forest,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
 ###
 
 # accuracy by group * lextale
@@ -370,6 +411,14 @@ rq_2_lextale_by_group <- plot(lt_st_me_rq2, plot = FALSE, line_args = list(size 
   ) +
   guides(color = guide_legend(override.aes = list(fill = NA, size = 2)))
 
+ggsave(
+  filename = here::here("figs", "rq_2_lextale_by_group.png"),
+  plot = rq_2_lextale_by_group,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
 # accuracy by group * eq
 
 # Conditional effects
@@ -405,6 +454,14 @@ rq_2_eq_by_group <- plot(eq_st_me_rq2, plot = FALSE, line_args = list(size = 4))
     legend.text.align = 0.5
   ) +
   guides(color = guide_legend(override.aes = list(fill = NA, size = 2)))
+
+ggsave(
+  filename = here::here("figs", "rq_2_eq_by_group.png"),
+  plot = rq_2_eq_by_group,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
 
 ###
 
@@ -464,6 +521,14 @@ rq2_3way <- plot(rq2_lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] 
     strip.background = element_blank()
   )
 
+ggsave(
+  filename = here::here("figs", "rq2_3way.png"),
+  plot = rq2_3way,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
 ### experimental lextale X eq interaction
 exp_lex_eq_slopes_eq_lextale <- m_rq2_post %>% 
   transmute(
@@ -497,7 +562,7 @@ hdi_low <- diff_summary$CI_low
 hdi_high <- diff_summary$CI_high
 
 # Plot
-ggplot(diff_draws, aes(x = diff_neg1_1)) +
+rq2_diffplot <- ggplot(diff_draws, aes(x = diff_neg1_1)) +
   geom_density(fill = "skyblue", alpha = 0.5) +      # posterior density
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") + # zero reference
   geom_segment(aes(x = hdi_low, xend = hdi_high, y = 0, yend = 0), 
@@ -510,4 +575,10 @@ ggplot(diff_draws, aes(x = diff_neg1_1)) +
   ) +
   theme_minimal()
 
-
+ggsave(
+  filename = here::here("figs", "rq2_diffplot.png"),
+  plot = rq2_diffplot,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
