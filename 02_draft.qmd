@@ -1,0 +1,343 @@
+---
+title: "Rapid Acquisition of a Novel Intonation Contour by High-Empathy Individuals"
+shorttitle: "Rapid Acquisition of a Novel Intonation Contour"
+author:
+  - name: Robert Esposito
+    corresponding: true
+    email: rme70@rutgers.edu
+    affiliations:
+      name: "Rutgers University"
+      department: Department of Spanish and Portuguese
+      address: 15 Seminary Pl.
+      city: New Brunswick
+      region: NJ
+      country: USA
+      postal-code: 08901
+author-note:
+  # Disclosures condensed to one paragraph, but you can start a field with two line breaks to break them up: \n\nNew Paragraph
+  disclosures:
+    # Example: This study was registered at X (Identifier Y).
+    study-registration: ~
+    # Acknowledge and cite data/materials to be shared.
+    data-sharing: ~
+    # Example: This article is based on data published in [Reference].
+    # Example: This article is based on the dissertation completed by [citation].  
+    related-report: ~
+    # Example: [Author name] has been a paid consultant for Corporation X, which funded this study.
+    conflict-of-interest: The authors have no conflicts of interest to disclose.
+    # Example: This study was supported by Grant [Grant Number] from [Funding Source].
+    financial-support: ~
+    # Example: The authors are grateful to [Person] for [Reason].
+    gratitude: ~
+    # Example. Because the authors are equal contributors, order of authorship was determined by a fair coin toss.
+    authorship-agreements: ~
+number-sections: true
+abstract: "Intonation, pitch modulation across an utterance, plays a critical role in communication, signaling sentence type, speaker intent, pragmatic nuances, and other functions. Second language (L2) learners often struggle to interpret intonational patterns in a target-like fashion, particularly in unfamiliar dialects, which can impact comprehension and communicative success. Emerging evidence suggests that individual differences in empathy, the ability to infer others’ intentions and emotions, influences L2 intonation acquisition.
+The present study investigated whether native English L2 Spanish learners with higher empathy more effectively acquire a novel intonation contour from Puerto Rican and Cuban Spanish: absolute interrogatives with low boundary tones. 200 learners of varying proficiency completed a two-alternative forced choice task judging whether utterances were questions or statements. Half of the participants received a brief incidental-learning training session (<5 minutes) consisting of naturalistic conversations with a content-based question after each.
+Bayesian multilevel regression revealed that response accuracy positively correlated with proficiency in both groups. Critically, in the trained group, this effect was modulated by empathy: higher-empathy learners with above-average proficiency performed better than lower-empathy peers. These results suggest that empathy facilitates L2 intonation acquisition by helping learners store more socially and linguistically relevant information, supporting faster establishment of novel sound-to-meaning associations."
+keywords: [empathy, intonation, second language acquisition, speech perception, incidental learning]
+floatsintext: true
+bibliography: "./lit/exp_emp_bib.bib"
+format:
+  apaquarto-docx: default
+  apaquarto-html: default
+  apaquarto-pdf:
+    documentmode: man
+---
+```{r}
+#| label: setup
+#| include: false
+
+# Set document defaults
+knitr::opts_chunk$set(
+  cache.extra = knitr::rand_seed, 
+  fig.retina = 2, 
+  echo = F, 
+  message = F, 
+  warning = F,
+  fig.asp = 0.5625,
+  out.width = "100%",
+  dpi = 300, 
+  fig.path = 'figs/', 
+  dev = c("png", "pdf")
+  )
+
+source(here::here("scripts","r","01_helpers.R"))
+source(here::here("scripts","r","02_load_data.R"))
+source(here("scripts","r","10_manuscript_stats.R"))
+```
+
+Currently, most phonological models of second language acquisition (SLA) focus primarily on segmental features, while suprasegmental features receive comparatively little theoretical or pedagogical attention. Intonation, the modulation of pitch across an utterance, is one such understudied feature [@rao2019key; @jenkins20045], despite its critical role in communication. It can signal sentence type [@prieto2010transcription], speaker commitment [@orrico2020tonal], or politeness [@devis2014intonation], among many other diverse functions. Given the many-to-many mappings between sound and meaning, second language (L2) learners often struggle with intonation, in part due to transfer effects from their first language [@trofimovich2006learning; @mennen2015beyond].
+
+However, not all learners are equally affected. Emerging evidence indicates that target-like perception of intonation is influenced by pragmatic skills, particularly empathy [@casillas2023using]. This aligns with findings in monolingual (L1) populations, where higher empathy is associated with increased sensitivity to intonational contours [@esteve2020empathy; @esteve2016role; @orrico2025individual; @orrico2020individual].
+
+The present study contributes to these lines of research by investigating the causal link between empathy and intonation in L2 populations. I examined a situation common to L2 learners: exposure to an unfamiliar dialect and the task of accurately interpreting its intonational patterns. Specifically, participants judged whether an utterance was a question or a statement. Based on prior findings that higher-emapthy learners encode more information during communicative interactions [@melchers2017oxtr], it was hypothesized that they would more rapidly acquire the novel sound-to-meaning mapping and outperform their lower-empathy peers in a two-alternative forced choice task after a very brief incidental-learning [@hulstijn2003incidental] training session.
+
+# Background and Motivation
+
+## L2 Intonation Acquisition
+
+Investigation in first language (L1) intonational phonology has exploded since the groundbreaking work by @ladd2008intonational and colleagues [@pierrehumbert1980phonology], but research on second language acquisition (SLA) of intonation has lagged behind. Second language (L2) learners face challenges acquiring the target language's intonation system [@trofimovich2006learning], and these difficulties may result in comprehension issues and communication breakdowns. Intonation serves to signal various and distinct communicative functions across syntax, pragmatics, and semantics, such as constituent focusing [@buring2016intonation], affective meaning [@rodero2011intonation], and politeness [@herrero2020perception]. In Spanish, one such function is sentence modality, which is typically cued solely by intonation [@navarro1974manual]. For example, the spoken utterance 'Mariano habla del tiempo' *Mariano talks about the weather* may variably be a declarative or interrogative depending on the intonational contour. Given the many challenges posed to an L2 learner, a central question that remains is how existing SLA models can be used to account for the acquisition of intonation.
+
+Current SLA models, such as Speech Learning Model (SLM) revised [@flege2021revised], primarily focus on segmental phonology. The L2 Intonation Learning Theory [LILt, @mennen2015beyond] serves as step into SLA suprasegmental phonology as a working production model. Similar to the SLM-r, the LILt model proposes that intonation acquisition outcomes depend on cross-language similarities and differences on one or more of four dimensions (systemic, realizational, semantic, and frequency). The LILt model predicts that L2 learners whose target language converges on one or more dimensions between their L1 and L2 are predicted to exhibit positive transfer, whereas differences in dimensions should produce negative transfer.
+
+A ripe area for investigating L1-L2 intonation transfer is L1 English L2 Spanish perception of Spanish neutral absolute interrogatives (i.e., yes-no questions) that end in a low boundary tone, such as those found in Caribbean [@armstrong2010puerto; @bailey2014intonational; @willis2010dominican] and Galician Spanish [@perez2024basic], as well as some other varieties [@astruc2010venezuelan; @gabriel2010argentinian]. According to the LILt model, L1 English L2 Spanish learners are predicted to have difficulty accurately processing final-fall absolute interrogatives, specifically because the final-fall boundary tone differs between English and Spanish on the *semantic* dimension. However, what little data is available has demonstrated that L1 English L2 Spanish speakers face difficulty interpreting these utterances accurately as interrogatives [@george2024l2; @casillas2023using; @brandl2020development; @trimble2013perceiving; for contrary results, see @bedialauneta2023perception]. Additionally, there has been little research directly investigating the acquisition of a low boundary tone to signal absolute interrogatives in L2 Spanish learners, possibly due to variety biases in pedagogical material; that is, L2 Spanish learners are not typically exposed to the varieties that feature this element in the classroom [@gallego2013raising]. 
+
+@trimble2013perceiving, for example, investigated the intonational development of L1 English L2 Spanish speakers in a partial replication of @face2007role. Participants of varying proficiency levels (beginner, advanced) and study abroad experiences (Toledo, Spain; Mérida, Venezuela) completed a two-alternative forced choice task in which they had to accurately identify broad focus declaratives and absolute interrogatives. The stimuli were produced by speakers from two varieties that signal absolute interrogatives with a final rise (Toledo, Spain; L2, United States), and one variety with a final fall (Mérida, Venezuela). Ceiling performance was found for all dialect utterance types except for Venezuelan absolute interrogatives, the response accuracy of which depended on proficiency and study abroad experience. However, even advanced learners with study abroad experience in Mérida, Venezuela did not perform at ceiling.
+
+In a similar two-alternative forced choice task, @casillas2023using presented participants across a wide range of proficiency levels with four utterance types (broad focus declarative, narrow focus declarative, wh- question, absolute interrogative) across eight varieties of Spanish, two of which were Puerto Rican and Cuban. The absolute interrogative utterances from these varieties featured the expected low boundary tone. Although no analysis was done specifically on Caribbean absolute interrogatives, the Caribbean varieties had the lowest response accuracy across all proficiency levels.
+
+On the other hand, @bedialauneta2023perception found contradistinctive results. In her study, participants completed a similar two-alternative forced choice task with broad focus declaratives and absolute interrogatives from an Argentinian speaker. In this variety, absolute interrogatives may be signaled by a circumflex rise-fall boundary tone. Interestingly, L2 participants identified Argentinian utterances with accuracy that did not prove to be meaningfully different from L1 Argentinian Spanish speakers performing the same task. She attributed the unexpected findings to secondary cues to intonation [@face2007role], or possibly that the relative height of the last accentual peak before the final fall is enough to condition interrogativity for L1 English speakers [@gabriel2010argentinian]. Although she reports that participants had been learning Spanish for at least five years, she did not report proficiency measures.
+
+Based on the available research, L2 intonation perception is positively correlated with target language proficiency. Furthermore, the reviewed studies, on the whole, support predictions from the LILt model that L1 English L2 Spanish learners will have difficulties accurately interpreting absolute interrogatives with low boundary tones, such as those in Caribbean varieties. Given that L2 learners struggle overall with these tasks, the results provide important implications for L2 pedagogy.
+
+## L2 Intonation in the Language Classroom
+
+Despite the various systematic functions of intonation within language, it still is sidelined in the L2 classroom and pedagogical materials [@rao2019key; @jenkins20045]. As with other linguistic areas, transfer intonation effects, as predicted by the LILt model [@mennen2015beyond] may impose meaningful communication issues for L2 learners. @herrero2020unintentional, for example, investigated L1 Mandarin Chinese L2 Spanish learners' production of polite requests in Spanish evaluated by L1 Spanish speakers. They found that even if the utterance by the L2 learners included lexical-grammatical aggression mitigators (such as 'gracias' *please*), L1 Spanish speakers relied primarily on intonation to evaluate the utterance's politeness. In a similar vein, @estebas2014evaluation investigated intonational differences between English and Spanish responses to wh- questions as perceived by 15 L1 speakers of English and of Spanish. Participants were instructed to evaluate each utterance as "expected" (i.e., natural, polite, or nice) or "unexpected" (rude, impolite, or over-excited). She found that the expected pitch ranges in English and Spanish are at an opposition: broad pitch range is polite in English, but over-excited in Spanish; a narrow pitch range is rude in English, but polite in Spanish. These studies work to highlight the importance of intonation in the L2 classroom, but it remains unclear how intonation should be included.
+
+Research on and evaluating methodologies of teaching intonation in the classroom remain limited. Recent research has demonstrated that intentional [@hulstijn2003incidental] training methodologies (e.g., instructional sound-to-meaning mapping, shadowing exercises) resulted in meaningful improvement in L2 perception and production [@olea2019effectiveness; @sonsaat2025intonation; @george2019teaching]. For example, @sonsaat2025intonation examined student gains after a three-week training on final intonation contours (fall, rise, fall-rise) for L1 Turkish L2 English learners. Importantly, Turkish's utterance-level prosody is more constrained than Germanic languages [@kabak2016refin]; boundary tones of declaratives on the whole tend to be low, and it was predicted that participants would have most issue with the rises and fall-rises, in line with predictions from the LILt model [@mennen2015beyond]. These predictions were borne out in the pre-test, where participants had greater issues with the rises and fall-rises. In the post-test, participants displayed meaningful improvements in both the perception and production of these problem final contours, indicating that with this training, cross-linguistic influence may be inhibited.
+
+@george2019, on the other hand, completed only a 30-minute training session with intermediate to advanced L1 English L2 Spanish learners. In the training session, individuals were exposed to utterances from the Interactive Atlas of Spanish Intonation [@prietoroseano2009]. The instructor focused on three utterance types (declaratives, absolute interrogatives, and wh- questions) in eight dialects. She presented pitch tracks of each sentence type within each dialect and highlighted the overall contour, as well as differences in pitch accents and boundary tones. Before and after the training session, participants completed a discourse completion task to elicit each sentence type. @george2019 compared the pre- and post-test solely on differences and found that the training had no impact on declarative production, and only some impact on absolute interrogative and wh- question production.
+
+The above studies used training methodologies that relied on intentional learning paradigms. However, these studies represent a very small minority of what most L2 learners experience when acquiring intonation in the classroom. As intonation is not typically explicitly or intentionally taught in the classroom, students most likely rely on L1-L2 transfer [@ortega2014l2] or incidental learning through input from the instructor or other auditory input. Incidental learning in the current investigation is based on a definition provided by @hulstijn2003incidental: "the 'picking up' of words and structures, simply by engaging in a variety of communicative activities... during which the learner's attention is focused on the meaning rather than on the form of language" (p. 1). The majority of research on intentional and incidental learning has focused primarily on vocabulary (and spelling), and secondarily on morphology and syntax. Phonetics and phonology, on the other hand, has not received attention where the research goal makes clear a distinction between intentional and incidental learning. As such, an important theoretical consideration is *how* L2 learners acquire intonation in their target language without explicit instruction and what factors there are to consider in their development. One way to address this gap is by considering learner-internal variables that may shape how intonation is acquired under these circumstances.
+
+## Individual Differences in Empathy
+
+As of now, individual pragmatic differences in learners in regards to L2 intonational phonology acquisition has received little attention. Although individual differences in pragmatic skills have been observed for intonation processing [@bishop2016individual; @bishop2015individual; @diehl2008resolving; @ward1988intonation], the construct *empathy* has recently garnered attention. Empathy, one's ability to infer the intentions of others [@baron2004empathy], has been associated with theory of mind, mindreading, mentalizing, and perspective-taking [@baron2011zero; @carruthers2009mindreading; @frith2003development]. Typically, empathy is categorized by *affective empathy*, or emotional alignment with the interlocutor, and *cognitive empathy*, recognizing and understanding what an interlocutor feels or thinks. The latter categorization, cognitive empathy, has clear ties to the linguistic domain: empathy is necessary to comprehend an interlocutor's motives in verbal interactions, especially for the interpretation of non-literal meaning.
+
+A growing body of research has provided evidence that the construct empathy explains some variability in intonation perception in the L1 [@esteve2020empathy; @esteve2016role; @orrico2025individual; @orrico2020individual], and preliminary evidence in the L2. For example, @casillas2023using found an interaction between proficiency and empathy score in L1 English L2 Spanish learners, such that lower-proficiency learners with higher empathy scores, measured with the Empathy Quotient [@baron2004empathy], performed more accurately when identifying an utterance as a question or not. Apart from this one example, there has been no modern SLA research relating empathy to L2 perceptual development.
+
+Although the link between empathy and intonation processing has been established in L1 and L2 research, the mechanism and motivation for the link has not been thoroughly and explicitly investigated. One possibility is that L2 learners with higher empathy store more information about the linguistic content, even if it is not the focus of a given communicative activity. For example, @melchers2017oxtr found that higher-empathy participants more accurately responded to questions about brief videos more accurately than their lower-empathy participants. Although @melchers2017oxtr described their videos-and-questions methodology as an "implicit learning paradigm", and that differences in "implicit perception" may explain the results between higher- and lower-empathy participants, it must be clear that "implicit" has received a multitude of definitions within and without linguistics. For this reason, what @melchers2017oxtr described as "implicit" will here be reinterpreted as "incidental" [@hulstijn2003incidental]. That is, participants incidentally learned and retained information from the brief videos. In a similar way, participants in a linguistic study may incidentally acquire vocabulary through reading [e.g., @horst1998beyond].
+
+# Present Study
+
+The present study investigates whether L1 English L2 Spanish learners can rapidly acquire accurate perception of Spanish absolute interrogatives with low boundary tones, a feature characteristic of Puerto Rican and Cuban varieties and predicted by the LILt model  to be difficult for L1 English speakers [@mennen2015beyond]. Specifically, I investigate the relationship between acquisition of the target sound-meaning relationship and the construct empathy [@baron2004empathy]. Although previous research has established a relationship between empathy and intonation in L1 speakers [@esteve2020empathy; @esteve2016role; @orrico2025individual; @orrico2020individual] and L2 learners [@casillas2023using], it is remains unclear why individuals with differing empathy perform differently. This study was preregistered on the Open Science Framework (https://osf.io/p6vuz) and designed to address the following research questions:
+
+1. Do higher-empathy L1 English L2 Spanish speakers make greater use of prosodic cues to determine if a Spanish utterance is an interrogative?
+
+2. Do higher-empathy L1 English L2 Spanish speakers make greater use of prosodic input from dialects to which they have little or no exposure to extract prosodic features?
+
+With respect to RQ1, it is expected that higher-empathy learners, compared to lower-proficiency leaners, will more accurately identify utterances as interrogatives, in line with @casillas2023using.
+
+As for RQ2, it should be recalled that @casillas2023using found that participants performed less accurately when identifying absolute interrogatives from Spanish varieties with a low boundary tone (i.e., Puerto Rican and Cuban varieties). As such, it is predicted that when participants are exposed to these dialects from naturalistic conversations before performing the given task, higher-empathy individuals will store more information about the form and function of the low boundary tone as opposed to lower-empathy individuals, and thus perform more accurately [@melchers2017oxtr] and inhibiting L1-L2 transfer. 
+
+# Methodology
+
+## Participants
+
+Two experiments were launched on the online experimental platform Prolific.ac: one for the experimental group and one for the control group. Upon beginning either experiment, all participants responded to the question "Are you familiar with Caribbean (e.g., Caribbean, Puerto Rican) or Galician Spanish?", which served as a proxy for if the individual was familiar with a variety that has a final fall contour for absolute interrogatives. Participants could choose from a drop-down menu either "yes" or "no". Participants were recruited until both the control and experimental groups had 100 participants each that responded "no" to this question.
+
+The pool of participants for both groups were filtered primarily by using criteria set in Prolific.ac. Participants self-reported as being adult L1 English speakers born, raised, and currently living in the Northeastern US. Furthermore, participants had to have reported growing up as a monolingual English speaker. They reported no hearing difficulties and were required to use headphones on a personal computer. 
+
+To address RQ1, all recruited participants in the control group were included in the analysis (n = `r length(unique(rq1$participant_id))`). For RQ2, only the first 100 participants from each group who responded that they were unfamiliar with the above-specified dialects were included. 
+
+Both groups were compensated at a rate of \$12.00 per hour. Participants in the control group were paid \$3.00, while participants in the experimental group, which was approximately five minutes longer, were paid \$4.00 upon completing all tasks. The median time of completion for the control group was approximately `r specify_decimal(control_mean_time,k=0)` minutes, while the median time for the experimental group was approximately `r specify_decimal(experimental_mean_time,k=0)` minutes due to the additional task.
+
+In sum, all participants were adult L1 English L2 Spanish learners with varying levels of Spanish proficiency, ranging from functionally monolingual to highly proficient.
+
+## Tasks
+
+The experimental and control groups performed the same tasks: a 2AFC task, a lexical decision vocabulary assessment, and a Likert-type questionnaire to assess empathy. The experimental group completed an additional "exposure" task first. The tasks were programed in Python using PsychoPy3 [@peirce2019psychopy2] and hosted on Pavlovia. All code and material used to generate the tasks are freely available on the Open Science Framework.
+
+### Exposure Stimuli {#sec-exposure}
+
+Participants in the experimental group were first exposed to three naturalistic phone conversations. Each conversation was between two speakers of either Dominican, Puerto Rican, or Galician Spanish talking about everyday topics, such as going to the grocery store or making plans for dinner. These dialects were chosen specifically because they feature a final fall when producing neutral absolute interrogatives. Each speaker was given a script to read and they were told that they may modify any vocabulary to make it more natural to them, but not overall structure. Each conversation lasted approximately one minute. @tbl-stimuli documents the total number of absolute interrogatives produced in each conversation, as well as the count of absolute interrogatives that featured a final fall. In total, participants were exposed to 21 absolute interrogatives, 16 
+(`r specify_decimal(((16/21) * 100),k=2)`%) of which were produced with a final fall.
+
+```{r}
+#| label: tbl-stimuli
+#| tbl-cap: Stimuli for exposure trials in experimental group.
+
+stim_table <- data.frame(
+  dialect = c("Dominican", "Galician", "Puerto Rican", "TOTAL"),
+  "time (seconds)" = c(60, 47, 36, 143),
+  "# of absolute interrogatives" = c(10, 5, 6, 21),
+  "# of absolute interrogatives with final fall" = c(7, 3, 6, 16),
+  check.names = FALSE
+)
+
+kable(stim_table,   
+      format = "markdown")
+```
+
+### 2AFC
+
+The auditory stimuli for the two-alternative forced choice task (2AFC) consisted of 88 items total, taken from a subset of those used in @casillas2023using, specifically from Cuban, Puerto Rican, Mexican, and Castilian speakers. Each speaker produced the same 22 utterances, 11 of which were broad focus statements and 11 of which were absolute interrogatives. The sentences were made up of three function words following a subject-verb-object (SVO) word order, the default in Spanish. The object was a noun with penultimate stress. The four native speakers produced the same items in a quiet room using professional recording equipment. The items were presented to the speaker on a screen, and they were asked to silently read the item to familiarize themselves with the content, and then to read it aloud. All utterances were segmented using Praat [@BoersmaWeenink2018]. A detailed description of the auditory stimuli is provided in the OSF repository from @casillas2023using at: https://osf.io/zxkdt.
+
+For RQ1, all 88 items were used for analysis; for RQ2, only 22 critical items were used for analysis. Those 22 critical items were absolute interrogatives from the Puerto Rican and Cuban speakers, who produced all absolute interrogatives with a final fall.
+
+### LexTALE
+
+Spanish proficiency was assessed by administering the Lexical Test for Advanced Learners of Spanish [LexTALE-ESP, henceforth LexTALE, @izura2014lexical; @lemhofer2012introducing]. The LexTALE is a lexical decision experiment that provides a standardized assessment of vocabulary size in Spanish. Participants are exposed to a series of real words and pseudowords on the computer screen, and they must decide if the word is real or fake. LexTALE scores can range from -20 to 60. Monolingual Spanish speakers generally score above 50, whereas individuals with little or no knowledge tend to score negative. Adult learners with low to medium proficiency range from 0 to 25, and advanced learners generally score above 25. Proficiency in this study is treated as a continuous variable. 
+
+To assess how participants performed on this measure, descriptive statistics and a regression model were computed. @tbl-lextale shows the descriptive statistics of LexTALE scores from the participant samples used to address RQ1 and RQ2. A Bayesian regression model was fit to LexTALE score as a function of *group* (baseline condition = control group). The intercept estimate was &beta; = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Intercept", Median)` (HDI = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Intercept", HDI)`). Relative to the baseline, the experimental group was estimated to score slightly higher (&beta; = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Experimental group", Median)`, HDI = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Experimental group", HDI)`), but this is not interpreted as a meaningful difference.
+
+```{r}
+#| label: tbl-lextale
+#| tbl-cap: Descriptive statistics of LexTALE scores.
+
+kable(lextale_table,
+      digits=2,
+      format = "markdown")
+```
+
+### Empathy Questionnaire
+
+The construct empathy was assessed using the Empathy Quotient [EQ, @baron2004empathy]. The EQ consists of 60 items, 40 critical items and 20 distractors, that must be rated on a four-point Likert scale ranging from "strongly agree" to "strongly disagree". To avoid response bias, choices indicating empathic responses are coded to elicit "agree" responses in half the target items and "disagree" responses in the other half. The target items are scored with 2 or 1 points based on if the participant responds "strongly" or "slightly" to the "empathic" response, and 0 if the participants responds with the "non-empathic" response. The EQ is scored by summing the total points to produce a single value indicating an individual's level of empathy. The minimum score is 0 (low empathy) and the maximum score is 80 (high empathy). 
+
+To assess how participants performed on this measure, descriptive statistics and a regression model were computed. @tbl-eq shows the descriptive statistics of EQ scores from the participant samples used to address RQ1 and RQ2. A Bayesian regression model was fit to EQ score as a function of *group* (baseline condition = control group). The intercept estimate was &beta; = `r pull_from_tib(m_eq_rq2_table, Parameter, "Intercept", Median)` (HDI = `r pull_from_tib(m_eq_rq2_table, Parameter, "Intercept", HDI)`). Relative to the baseline, the experimental group was estimated to score slightly higher (&beta; = `r pull_from_tib(m_eq_rq2_table, Parameter, "Experimental group", Median)`, HDI = `r pull_from_tib(m_eq_rq2_table, Parameter, "Experimental group", HDI)`), but this is not interpreted as a meaningful difference.
+
+```{r}
+#| label: tbl-eq
+#| tbl-cap: Descriptive statistics of EQ scores.
+
+kable(eq_table,
+      digits=2,
+      format = "markdown")
+```
+
+## Procedure
+
+Participants were recruited on Prolific.ac and completed all tasks in a single session. The experimental and control groups identically completed tasks in the same order, with the exception that the experimental group first completed the exposure task. Afterwards, they completed the 2AFC, the LexTALE, and finally the EQ questionnaire.
+
+The experimental group first completed the "exposure" task, in which they listened to three short conversations. After each conversation, they were asked to respond to a true-or-false question regarding the contents of the conversation.
+
+Both the experimental group and the control group completed the same 2AFC task. Participants were presented an audio file that was either a statement (broad focus) or question (absolute interrogative). Participants were instructed to determine as quickly and accurately as possible if the utterance they heard was a question or not. At the start of each audio, they were prompted on-screen with the question, "Is this a question?" and they responded with their keyboard by typing either "1" for "yes" or "0" for "no". Afterwards, participants completed the LexTALE and Empathy Quotient.
+
+## Statistical Analysis
+
+I report two statistical analyses. The first analysis addresses RQ1, which was pre-registered, but the specific model structure was not. The second analysis addresses RQ2, which was pre-registered for both the research question and the model structure. Both analyses model response accuracy using Bayesian multilevel logistic regression. Both models' likelihoods were Bernoulli distributed with logit link functions. All continuous variables were standardized. The criterion, *response*, was coded as "1" for correct responses and "0" for incorrect responses. That is, the models represented the probability of accurately responding to the prompt, "Is this a question?".
+
+The first analysis addressing RQ1 considered response accuracy for the population effects *caribbean* ('0' for Castilian and Mexican dialects; '1' for Cuban and Puerto Rican dialects), *utterance type* (broad focus declarative and absolute interrogative), *LexTALE score* (i.e., Spanish proficiency), *EQ* (empathy quotient), and the higher order interactions. I specified group-level effects for participants, speaker variety, and items. The slope for *utterance type* varied for the participant effect, as did the *LexTALE* by *EQ* interaction for the speaker variety effect. The intercept represented the log-odds response accuracy of a declarative utterance produced by a non-Caribbean speaker at the average proficiency and EQ levels. For this model, all participants from the control experiment (i.e., participants not exposed to the naturalistic conversation stimuli) as well as all stimuli were included for analysis.
+
+The second analysis addressing RQ2 considered response accuracy for the population effects *LexTALE score*, *EQ*, and *group* (experimental, control), as well as the higher order interactions. I specified group-level effects for participants, speaker variety, and items. The slope for *LexTALE* by *EQ* interaction varied for the speaker variety effect. For this model, 200 participants total were included, 100 from each the control and experimental group. All participants responded "no" to the question "Are you familiar with Caribbean (e.g., Caribbean, Puerto Rican) or Galician Spanish?". Furthermore, only the critical items, absolute interrogatives produced by the Cuban and Puerto Rican speakers, were included in the analysis. The intercept represented the control group's log-odds response accuracy of an absolute interrogative produced by a Caribbean Spanish speaker at the average proficiency and EQ levels.
+
+For all models, I included regularizing, weakly informative priors [@gelman2017prior]. I sample from the posterior distribution of a given model for statistical inferences. To assess my preregistered hypotheses, I established a region of practical equivalence (ROPE) around a point null value of 0 [see @kruschke2018rejecting] using the following formula:
+
+$$ROPE = \frac{\mu_1 - \mu_2}{\sqrt{\frac{\sigma_1^2 + \sigma_2^2}{2}}}$$
+
+For all models, median posterior point estimates are reported for each parameter of interest, along with the 95% highest density interval (HDI), the percent of the region of the HDI contained within the ROPE, and the maximum probability of effect (MPE). For statistical inferences, I focus on estimation rather than decision-making rules, though, generally, a posterior distribution for a parameter in which 95% of the HDI falls outside the ROPE and a high MPE (i.e., values close to 1) are taken as compelling evidence for a given effect. I conducted all analyses using R and fit all models using the probabilistic programming language stan via the R package brms [@burkner2017brms; @burkner2017advanced]. 
+
+# Results
+
+## RQ1
+
+The first analysis addressed RQ1, which aimed to determine if the findings from @casillas2023using could be replicated. In their results, response accuracy to broad focus declaratives varied as a function of LexTALE score and EQ, such that low-proficiency participants with higher empathy performed more accurately than their proficiency-matched lower-empathy peers. Importantly, there was no effect found for empathy or the interaction between proficiency and EQ for absolute interrogatives.
+
+```{r}
+#| label: fig-m-rq1-forest
+#| fig-cap: Forest plot of first model.
+
+knitr::include_graphics(
+  here("figs", "m_rq1_forest.png")
+  )
+```
+
+@fig-m-rq1-forest is a forest plot of the model output. The log-odds of a correct response for a non-Caribbean declaratives at the average proficiency and EQ levels was `r pull_from_tib(m_rq1_table, Parameter, "Intercept", Median)`, or approximately `r specify_decimal(plogis(as.numeric(pull_from_tib(m_rq1_table, Parameter, "Intercept", Median))) * 100, k=2)`%, `r report_posterior(m_rq1_table, param = "Intercept")`. Comparatively, participants performed less accurately for non-Caribbean absolute interrogatives (`r report_posterior(m_rq1_table, param = "Absolute interrogative")`). In the case of Caribbean utterances, participants patterned similarly: declaratives (`r carib_decl`) were accurately identified more often than absolute interrogatives (`r carib_abs_int`). Although the median estimate for Caribbean declaratives was slightly above the median estimate of non-Caribbean declaratives, it should be noted that their HDIs largely overlap, suggesting that there is no meaningful difference between the two estimates. Caribbean absolute interrogatives, on the other hand, are on the whole more negative than non-Caribbean absolute interrogatives `r noncarib_abs_int`, suggesting that individuals had overall more difficulty identifying Caribbean absolute interrogatives.
+
+Figure @fig-m-rq1-eq-lextale plots response accuracy as a function of utterance type and proficiency (left panel) and EQ (right panel). Surprisingly, proficiency alone did not have a strong relationship with non-Caribbean declarative utterances (`r noncarib_decl_lex`), and in fact had a negative relationship with non-Caribbean absolute interrogatives (`r noncarib_abs_int_lex`) and Caribbean declaratives (`r carib_decl_lex`). Caribbean absolute interrogatives, on the other hand, had a positive relationship with proficiency (`r carib_abs_int_lex`).
+
+Empathy, as opposed to proficiency, was a stronger predictor of response accuracy in general. Response accuracy to non-Caribbean declaratives (`r noncarib_decl_eq`) and absolute interrogatives (`r noncarib_abs_int_eq`) had largely positive posterior distributions. To a lesser extent, Caribbean declaratives had a positive relationship with empathy (`r carib_decl_eq`), whereas there was little evidence to suggest a relationship between response accuracy to Caribbean absolute interrogatives and empathy (`r carib_abs_int_eq`).
+
+```{r}
+#| label: fig-m-rq1-eq-lextale
+#| fig-cap: (A) Effect of EQ by utterance type. (B) Effect of LexTALE by utterance type.
+
+knitr::include_graphics(here("figs", "rq1_eq_lextale_patchwork.png"))
+```
+
+Lastly, the model estimates the proficiency by EQ interaction for each utterance type. There was weak evidence to suggest that the proficiency effect was modulated by EQ for non-Caribbean absolute interrogatives (`r noncarib_abs_int_lex_eq`), but not for any other dialect or sentence type combination. @fig-m-rq1-3way-interaction plots the relationship. When holding standardized EQ values of -1, 0, and +1 constant for non-Caribbean absolute interrogative utterances across proficiency, the slope is more negative for lower EQ. In other words, learners with higher empathy at any given proficiency level tended to respond more accurately.
+
+```{r}
+#| label: fig-m-rq1-3way-interaction
+#| fig-cap: Three-way interaction.
+
+knitr::include_graphics(
+  here("figs", "rq1_3way.png")
+  )
+```
+
+## RQ2
+
+```{r}
+#| label: fig-m-rq2-forest
+#| fig-cap: Forest plot of second model.
+
+knitr::include_graphics(
+  here("figs", "m_rq2_forest.png")
+  )
+```
+
+The second analysis addressed RQ2, which questions whether L2 Spanish learners with higher empathy make greater use of prosodic cues when exposed to an unfamiliar variety of Spanish when compared to lower empathy individuals. This analysis included only Caribbean absolute interorgatives and participants who self-reported not being exposed to Caribbean or Galician varieties of Spanish.
+
+Figure @fig-m-rq2-forest summarizes the posterior distribution of the response accuracy model, illustrating point estimates &pm;66% and 95% HDIs in graphical form. The log-odds of a correct response at the average proficiency and EQ levels in the control group was `r pull_from_tib(m_rq2_table, Parameter, "Intercept", Median)`, or approximately `r specify_decimal(plogis(as.numeric(pull_from_tib(m_rq2_table, Parameter, "Intercept", Median))) * 100, k=2)`%, `r report_posterior(m_rq2_table, param = "Intercept")`. The experimental group had a slightly higher median estimate, but it should be noted that the HDI distribution is very large (`r exp`). This is to say, group by itself is not an adequate predictor of response accuracy.
+
+```{r}
+#| label: fig-m-rq2-lextale-eq
+#| fig-cap: (A) Effect of EQ by group. (B) Effect of LexTALE by group.
+
+knitr::include_graphics(
+  here("figs", "rq2_eq_lextale_patchwork.png")
+  )
+```
+
+@fig-m-rq2-lextale-eq illustrates the relationship between response accuracy (left panel) and EQ (right panel) with response accuracy. The effect of proficiency in both groups was similarly positive (control: `r ctrl_lextale`; experimental: `r exp_lextale`), and the effect was practically equivalent between the two groups (`r report_posterior(m_rq2_table, param = "LexTALE:Experimental group")`). There was no evidence that empathy alone had an effect on response accuracy in either group (control: `r ctrl_eq`; experimental: `r exp_eq`).
+
+Although no effect was found for empathy alone, an interaction effect between empathy and proficiency was found in only the experimental group. The relationship is plotted in @fig-m-rq2-3way-interaction. In the left panel, response accuracy remains constant at standardized EQ values of -1, 0, and +1 across different proficiency levels in the control group (`r ctrl_lex_eq`). In the experimental group, on the other hand, the slope of the proficiency effect increases for higher EQ values (`r exp_lex_eq`). It should be noted that the effect here is weak, as indicated by the HDI including 0 and the given ROPE value. However, the bulk of the posterior is positive, and the MPE value close to 1 indicates higher certainty in the effect's direction. In other words, learners with high empathy (black lines) with above average proficiency tended to respond more accurately to Caribbean absolute interrogatives than their proficiency-matched peers only in the experimental group.
+
+```{r}
+#| label: fig-m-rq2-3way-interaction
+#| fig-cap: Three-way interaction.
+
+knitr::include_graphics(
+  here("figs", "rq2_3way.png")
+  )
+```
+
+
+To illustrate the interaction of empathy and proficiency, I compared predicted accuracy for learners at low (-1 SD) versus high (+1 SD) empathy across two levels of proficiency (+1 SD and +2 SD). At 1 SD above mean proficiency, learners with higher empathy were approximately `r specify_decimal(diff_summary$median[3],k=2)` percentage points (HDI = [`r specify_decimal(diff_summary$hdi_low[3],k=2)`, `r specify_decimal(diff_summary$hdi_high[3],k=2)`]) more accurate than those with low empathy, which corresponds to a `r specify_decimal(diff_summary$median[1],k=2)`% relative increase in accuracy (HDI = [`r specify_decimal(diff_summary$hdi_low[1],k=2)`, `r specify_decimal(diff_summary$hdi_high[1],k=2)`]). At 2 SD above mean proficiency, learners with higher empathy were approximately `r specify_decimal(diff_summary$median[4],k=2)` percentage points (HDI = [`r specify_decimal(diff_summary$hdi_low[4],k=2)`, `r specify_decimal(diff_summary$hdi_high[4],k=2)`]) more accurate than those with low empathy, which corresponds to a `r specify_decimal(diff_summary$median[2],k=2)`% relative increase in accuracy (HDI = [`r specify_decimal(diff_summary$hdi_low[2],k=2)`, `r specify_decimal(diff_summary$hdi_high[2],k=2)`]).
+
+# Discussion
+
+## RQ1
+
+The first research question, *Do higher-empathy L1 English L2 Spanish speakers make greater use of prosodic cues to determine if a Spanish utterance is an interrogative?*, was a partial replication of @casillas2023using, and informed by previous research on the relationship between empathy and intonation [@esteve2020empathy; @esteve2016role; @orrico2025individual; @orrico2020individual]. Unlike previous research on empathy's impact on L2 phonological acquisition, which primarily focused on pronunciation accuracy (ADD CITATIONS), my study continued the line investigated from @casillas2023using by investigating its relation to speech perception. I found that empathy, as measured by the EQ (@baron2004empathy), did modulate response accuracy, specifically for non-Caribbean utterances. Caribbean utterances, on the other hand, did not show an effect for empathy. These findings do not directly contradict @casillas2023using, but they are slightly different. Where @casillas2023using found a relationship between accuracy and empathy for declaratives, they did not find such for absolute interrogatives. This relationship was expected by them based on previous research on empathy and absolute interrogatives in L1 Salerno Italian speakers [@orrico2020individual]. Furthermore, although the same stimuli were used in the present study and @casillas2023using, a different distribution of dialects and sentence types were used: where @casillas2023using features six non-Caribbean dialects and two Caribbean dialects, and four sentence types (wh- question, absolute interrogatives, broad focus declaratives, and narrow focus declaratives), the current study featured two non-Caribbean and two Caribbean dialects, and only two sentence types (absolute interrogatives and broad focus declaratives). Unlike @casillas2023using, the current study specifically modeled Caribbean versus non-Caribbean dialects. As such, it is possible that the same findings could have been found in the study this is based on if such an analysis were realized. 
+
+Proficiency, as measured by the LexTALE-ESP [@izura2014lexical; @lemhofer2012introducing], was taken into consideration in this cross-sectional design. Surprisingly, proficiency was not found to have an effect for non-Caribbean declaratives, and in fact showed negative trends for non-Caribbean absolute interrogatives and Caribbean declaratives. Caribbean absolute interrogatives, on the other hand, showed a positive relationship with proficiency. The general findings on proficiency directly contradict previous research on the relationship between L2 intonation development and target language proficiency [@casillas2023using; @brandl2020development; @nibert2006acquisition; @trimble2013acquiring]. The validity of the LexTALE as a proxy measure of global proficiency has been questioned [@puig2023lextale]. However, these findings remain surprising, as @casillas2023using utilized the same measure of proficiency.
+
+A relationship between empathy and proficiency was also considered. It was found that only non-Caribbean absolute interrogative utterances supported such a relationship. In this relationship, individuals with higher empathy were "protected" from the negative-going proficiency trend, such that high-empathy high-proficiency individuals responded more accurately than their lower-empathy proficiency-matched peers. Although an interaction effect was also found by @casillas2023using, the trend was particularly different: they found that empathy had a "compounding effect" on the relationship between response accuracy and proficiency, such that lower-proficiency individuals with higher empathy showed more accuracy than their proficiency-matched peers only in wh- questions.
+
+As previously noted, the current study directly models Caribbean versus non-Caribbean dialects, unlike @casillas2023using. The decision to do so was two-fold: (1) Caribbean dialects featured the lowest response accuracy by participants in @casillas2023using; (2) Caribbean absolute interrogative stimuli differed from non-Caribbean absolute interrogative stimuli in that the former has a final fall, while the latter has a final fall. These differences may have resulted in some of the differences in the results, such as no empathy effect being found for absolute interrogatives in @casillas2023using, but such an effect being found in the present study. It may be the case that only the Caribbean varieties did not feature such an effect, and that confounded the overall effect.
+
+A possibility as to why no effect for empathy was found for Caribbean utterances is the lack of exposure to those dialects. For example, @orrico2020individual investigated L1 Salerno Italian speakers processing Italian sentences with varying nuclear configurations to predict degree of perceived positive bias (i.e., expected positive answer). They found that exposure to non-native dialects affected the way pitch span was mapped onto perceived bias, mediated by empathy. That is, high-empathy listeners were more affected by degree of non-native dialect exposure. As such, it may be that it is not simply enough to have higher empathy to have greater response accuracy when determining if an utterance is an interrogative or not in Spanish based on intonation alone, but exposure to the specific categorical tune-to-meaning association is also necessary.
+
+# RQ2
+
+Although @casillas2023using found a relationship between empathy and intonation processing in L1 English L2 Spanish learners, it remained unclear why having a higher EQ should drive greater accuracy when determining if a Spanish utterance is an interrogative or not. The second research question, *Do higher-empathy L1 English L2 Spanish speakers make greater use of prosodic input from dialects to which they have little or no exposure to extract prosodic features?*, aimed to provide greater understanding of the cognitive relationship between empathy and intonation processing. For the second research question, a between-subjects design compared L1 English L2 Spanish learners who self-reported as unfamiliar with Caribbean or Galician dialects (i.e., dialects with a final fall for absolute interrogatives). Participants in the experimental group were exposed to approximately three total minutes of conversation between three different groups of people. In total, they were exposed to 21 absolute interrogatives, 16 of which had a final fall (approximately `r (16/21) * 100`%).
+
+Previous research in psychology demonstrated that higher-empathy individuals exposed to short video clips responded more accurately to questions about the videos than their lower-empathy peers, suggesting that higher-empathy individuals retain more environment details while watching social interactions [@melchers2017oxtr]. Furthermore, @orrico2020individual found that both high empathy and exposure to a non-native dialect was necessary to cause phonological category interference. As such, the current study aimed to determine if higher-empathy L1 English L2 Spanish learners benefited greater from exposure to an unfamiliar intonation-meaning mapping, specifically Spanish absolute interrogatives with a final fall, when later determining if an utterance is an interrogative or not.
+
+No effect was found for empathy alone, but there was evidence for a weak interaction between empathy and proficiency only for individuals exposed to the short conversations between speakers who produce absolute interrogatives with final falls. That is, individuals at the average proficiency level did not benefit from higher empathy, but individuals with higher empathy and above-average proficiency outperformed on average their proficiency-matched peers. No effect of empathy, alone or interacting with proficiency, was found in the control group, the subjects of which were not exposed to the short conversations and also reported having no prior familiarity with the aforementioned dialects. These results corroborate the idea that higher empathy individuals retain more detail from social interactions [@melchers2017oxtr], but in second-language processing, empathy specifically works to modulate a proficiency effect when processing novel intonation-meaning mappings. Participants must have a certain proficiency in a language, as well as higher empathy, to benefit from rapid exposure to an unfamiliar intonation-to-meaning mapping.
+
+Within the language classroom, these findings suggest that only a small set of students (those with both higher empathy and higher proficiency) will benefit from brief incidental tasks involving intonation. It is clear that exposure alone is not sufficient for all individuals to acquire target intonation in production [@herrero2020perception] or perception [@herrero2020unintentional], and it is also clear that intentional learning [@olea2019effectiveness; @sonsaat2025intonation] reaps wider benefits than those found in the present study. As such, the results of this study point towards a greater need of more target-focused training for intonation, especially for dialects that have traditionally less exposure in the language classroom (e.g., Caribbean dialects). Indeed, the skills necessary to successfully complete the task in this study require "sociolinguistic competence" [@canale1987measurement], an essential component of successful language use.
+
+In sum, the present work contributes to our understanding of how empathy relates to speech processing, specifically for intonation. Current models of L2 phonology, such as the SLM-r [@flege2021revised], fail to address suprasegmental acquisition. Although the LILt model [@mennen2015beyond] has presented an opportunity to investigate L2 acquisition of intonation, it has primarily focused on transfer effects. The results of this study, as well as @casillas2023using, has demonstrated the need for such models to account for individual differences in learner outcomes.
+
+## Limitations and Future Directions
+
+While the current study provides evidence that L2 learners with higher empathy and higher proficiency benefit more from incidental learning of a new intonation-meaning mapping than their lower-empathy proficiency-matched peers, a longitudinal study would be required to know if these gains are maintained. Furthermore, it is not clear if the positive effect would continue to be found after repeated exposure. That is, do the lower-empathy individuals eventually "catch up" to their higher-empathy peers with increasing incidental learning moments, or do these individuals require intentional learning?
+
+Another query, one repeated from @casillas2023using, is how much of an effect does familiarity with a dialect have on response accuracy? @casillas2023using found that participants responded more accurately to wh- and absolute interrogatives from their self-reported familiar dialect, but not broad focus or narrow focus declaratives. Furthermore, they did not take proficiency or empathy into account. Based on the current findings, it does seem that empathy interacts with exposure. As previously discussed, @orrico2020individual found that empathy interacted with exposure to non-native dialects in L1 category perception. It is important to note that @orrico2020individual investigated individuals with exposure to *any* dialect other than their non-native one. Extending this to an L2 context, one of two hypotheses can be proposed: (1) high-empathy L2 learners, as opposed to lower-empathy L2 learners, exposed to various dialects in their L2 have greater pick-up of novel sound-meaning mappings in general; or (2) high-empathy L2 learners, as opposed to lower-empathy L2 learners, exposed to a specific dialect have greater sound-meaning mapping accuracy for that specific dialect. The current study pokes at the second hypothesis, but the small amount of exposure to the target dialect, and the focus on a single nuclear configuration, does not allow for a generalizable answer.
+
+Lastly, the lack of an effect (for non-Caribbean broad declaratives) and negative effect (for non-Caribbean absolute interrogatives and Caribbean declaratives) of proficiency was particularly surprising. It appears unlikely that the LexTALE-ESP [@izura2014lexical; @lemhofer2012introducing], the measure of proficiency used in this study, is inadequately correlated with intonational development, at least when it comes to identifying these sentence types as an interrogative or not, as @casillas2023using found a positive effect for proficiency, also measured with the LexTALE-ESP, across the board.
+
+## Conclusion
+
+The current study investigated the impact that incidental learning and empathy has on the acquisition of a novel intonation-meaning mapping. I found that individuals with above-average empathy and above-average proficiency were more sensitive to the novel mapping after a brief period of listening to naturalistic conversation compared to their lower-empathy proficiency-matched peers, and also compared to those who did not have the "exposure" period. This study contributes to our understanding of how individual differences impact L2 learner intonation outcomes, as well as providing evidence that incidental learning of intonation may only be beneficial for a subset of L2 learners. These results encourage more research in pragmatic skill as it relates to L2 learner outcomes, and how these findings, and those of @casillas2023using, relate to findings from L1 research on empathy and language processing.
+
+# References
+
+<!-- References will auto-populate in the refs div below -->
+
+::: {#refs}
+:::
