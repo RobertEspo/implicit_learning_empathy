@@ -1,4 +1,5 @@
 source(here::here("scripts", "r", "00_libs.R"))
+source(here::here("scripts","r","01_helpers.R"))
 
 # Load tables
 csv_files <- list.files(here("tables"), pattern = "\\.csv$", full.names = TRUE)
@@ -55,3 +56,17 @@ rq2 <- all_tasks_tidy %>%
     group = factor(group),
     sentence_type = as.factor(sentence_type),
     item = factor(item))
+
+# dataset for rq1 rt
+rq1_rt <- rq1 %>%
+  filter(rt_adj < 10, correct == 1) %>%
+  mutate(rt = rt_adj + abs(min(rt_adj)) + 0.01)
+
+# datset for rq2 rt
+rq2_rt <- rq2 %>%
+  filter(rt_adj < 10, correct == 1) %>%
+  mutate(rt = rt_adj + abs(min(rt_adj)) + 0.01)
+
+# ddm dataset
+ddm_sims <- read_csv(here("data","tidy","ddm_sims.csv"))
+ddm_estimates <- read_csv(here("data","tidy","ddm_estimates.csv"))

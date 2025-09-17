@@ -90,3 +90,31 @@ m_eq_rq2 <- brm(
   cores = parallel::detectCores(), 
   file = here("models", "m_eq_rq2")
 )
+
+# ------------------------------------------------------------------------------
+# reaction time
+###
+
+### priors ###
+rt_priors_shiftedln <- c(
+  set_prior('normal(6, 1)', class = 'b', coef = 'Intercept'),
+  set_prior('normal(1, 0.5)', class = 'sigma'),
+  set_prior('normal(0, 0.3)', class = 'b'),
+  set_prior('normal(0.5, 0.2)', class = 'sd')  
+)
+
+### model ###
+
+b_rt_nat_04 <- brm(
+  formula = rt ~ 0 + Intercept + lextale_std * eq_std * sentence_type * caribbean + 
+    (1 | player_id) +
+    (1 | item),
+  data = rq1_rt, 
+  warmup = 4000, iter = 8000, chains = 4,
+  family = shifted_lognormal(link = "identity"),
+  prior = rt_priors_shiftedln,
+  cores = parallel::detectCores(), 
+  backend = "cmdstanr", 
+  control = list(adapt_delta = 0.99, max_treedepth = 20),
+  file = here("models", "b_rt_nat_04")
+)
