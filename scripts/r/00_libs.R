@@ -14,6 +14,7 @@ library("writexl")
 library("glue")
 library(knitr)
 library(kableExtra)
+library(flextable)
 
 # Plotting packages
 library("ggplot2")
@@ -34,5 +35,6 @@ library("brms")
 library("tidybayes")
 library("bayestestR")
 library("RWiener")
+library(bayesDiagnostics)
 
 # -----------------------------------------------------------------------------

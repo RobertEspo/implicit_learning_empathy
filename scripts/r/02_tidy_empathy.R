@@ -2,11 +2,12 @@
 # Tidy empathy quotient data --------------------------------------------------
 ###############################################################################
 
-# Source libs  and helpers ----------------------------------------------------
+# Source libs and helpers ------------------------------------------------------
 
+# source(here::here("scripts", "r", "00_libs.R"))
 # source(here::here("scripts", "r", "01_helpers.R"))
 
-# Tidy empathy -----------------------------------------------------------------------------
+# Tidy empathy -----------------------------------------------------------------
 
 required_eq_cols <- "end_exp.stopped"
 
@@ -44,7 +45,7 @@ eq_data_experimental <- exp_list %>%
 
 eq_data_control <- ctrl_list %>%
   map_dfr(~ {
-    df <- .x  # already a data frame
+    df <- .x
     if (!all(required_eq_cols %in% names(df))) return(NULL)
     
     df %>%

@@ -1,8 +1,4 @@
 ###
-m_rq1_post <- 
-###
-
-###
 # rq1
 ###
 
@@ -13,24 +9,24 @@ simp_y_labs <- c(
   "LexTALE",
   "EQ",
   "Absolute interrogative",
-  "Caribbean",
+  "Falling-Q variety",
   "LexTALE × EQ",
   "LexTALE × Absolute interrogative",
   "EQ × Absolute interrogative",
-  "LexTALE × Caribbean",
-  "EQ × Caribbean",
-  "Absolute interrogative × Caribbean",
+  "LexTALE × Falling-Q variety",
+  "EQ × Falling-Q variety",
+  "Absolute interrogative × Falling-Q variety",
   "LexTALE × EQ × Absolute interrogative",
-  "LexTALE × EQ × Caribbean",
-  "LexTALE × Absolute interrogative × Caribbean",
-  "EQ × Absolute interrogative × Caribbean",
-  "LexTALE × EQ × Absolute interrogative × Caribbean"
+  "LexTALE × EQ × Falling-Q variety",
+  "LexTALE × Absolute interrogative × Falling-Q variety",
+  "EQ × Absolute interrogative × Falling-Q variety",
+  "LexTALE × EQ × Absolute interrogative × Falling-Q variety"
 )
 
 
 simp_labs_tib <- tibble(
   y = simp_y_labs,
-  x = -2.5
+  x = -3.5
 ) %>%
   mutate(y = fct_relevel(
     y,
@@ -38,18 +34,18 @@ simp_labs_tib <- tibble(
     "LexTALE",
     "EQ",
     "Absolute interrogative",
-    "Caribbean",
+    "Falling-Q variety",
     "LexTALE × EQ",
     "LexTALE × Absolute interrogative",
     "EQ × Absolute interrogative",
-    "LexTALE × Caribbean",
-    "EQ × Caribbean",
-    "Absolute interrogative × Caribbean",
+    "LexTALE × Falling-Q variety",
+    "EQ × Falling-Q variety",
+    "Absolute interrogative × Falling-Q variety",
     "LexTALE × EQ × Absolute interrogative",
-    "LexTALE × EQ × Caribbean",
-    "LexTALE × Absolute interrogative × Caribbean",
-    "EQ × Absolute interrogative × Caribbean",
-    "LexTALE × EQ × Absolute interrogative × Caribbean"
+    "LexTALE × EQ × Falling-Q variety",
+    "LexTALE × Absolute interrogative × Falling-Q variety",
+    "EQ × Absolute interrogative × Falling-Q variety",
+    "LexTALE × EQ × Absolute interrogative × Falling-Q variety"
   ))
 
 m_rq1_forest <- as_tibble(m_rq1) %>% 
@@ -60,20 +56,20 @@ m_rq1_forest <- as_tibble(m_rq1) %>%
     Parameter == "b_lextale_std" ~ "LexTALE",
     Parameter == "b_eq_std" ~ "EQ",
     Parameter == "b_sentence_typeinterrogativeMtotalMyn" ~ "Absolute interrogative",
-    Parameter == "b_caribbean1" ~ "Caribbean",
+    Parameter == "b_caribbean1" ~ "Falling-Q variety",
     
     Parameter == "b_lextale_std:eq_std" ~ "LexTALE × EQ",
     Parameter == "b_lextale_std:sentence_typeinterrogativeMtotalMyn" ~ "LexTALE × Absolute interrogative",
     Parameter == "b_eq_std:sentence_typeinterrogativeMtotalMyn" ~ "EQ × Absolute interrogative",
-    Parameter == "b_lextale_std:caribbean1" ~ "LexTALE × Caribbean",
-    Parameter == "b_eq_std:caribbean1" ~ "EQ × Caribbean",
-    Parameter == "b_sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "Absolute interrogative × Caribbean",
+    Parameter == "b_lextale_std:caribbean1" ~ "LexTALE × Falling-Q variety",
+    Parameter == "b_eq_std:caribbean1" ~ "EQ × Falling-Q variety",
+    Parameter == "b_sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "Absolute interrogative × Falling-Q variety",
     
     Parameter == "b_lextale_std:eq_std:sentence_typeinterrogativeMtotalMyn" ~ "LexTALE × EQ × Absolute interrogative",
-    Parameter == "b_lextale_std:eq_std:caribbean1" ~ "LexTALE × EQ × Caribbean",
-    Parameter == "b_lextale_std:sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "LexTALE × Absolute interrogative × Caribbean",
-    Parameter == "b_eq_std:sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "EQ × Absolute interrogative × Caribbean",
-    Parameter == "b_lextale_std:eq_std:sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "LexTALE × EQ × Absolute interrogative × Caribbean",
+    Parameter == "b_lextale_std:eq_std:caribbean1" ~ "LexTALE × EQ × Falling-Q variety",
+    Parameter == "b_lextale_std:sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "LexTALE × Absolute interrogative × Falling-Q variety",
+    Parameter == "b_eq_std:sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "EQ × Absolute interrogative × Falling-Q variety",
+    Parameter == "b_lextale_std:eq_std:sentence_typeinterrogativeMtotalMyn:caribbean1" ~ "LexTALE × EQ × Absolute interrogative × Falling-Q variety",
     
     TRUE ~ Parameter
   ),
@@ -82,21 +78,21 @@ m_rq1_forest <- as_tibble(m_rq1) %>%
                           "LexTALE",
                           "EQ",
                           "Absolute interrogative",
-                          "Caribbean",
+                          "Falling-Q variety",
                           "LexTALE × EQ",
                           "LexTALE × Absolute interrogative",
                           "EQ × Absolute interrogative",
-                          "LexTALE × Caribbean",
-                          "EQ × Caribbean",
-                          "Absolute interrogative × Caribbean",
+                          "LexTALE × Falling-Q variety",
+                          "EQ × Falling-Q variety",
+                          "Absolute interrogative × Falling-Q variety",
                           "LexTALE × EQ × Absolute interrogative",
-                          "LexTALE × EQ × Caribbean",
-                          "LexTALE × Absolute interrogative × Caribbean",
-                          "EQ × Absolute interrogative × Caribbean",
-                          "LexTALE × EQ × Absolute interrogative × Caribbean")
+                          "LexTALE × EQ × Falling-Q variety",
+                          "LexTALE × Absolute interrogative × Falling-Q variety",
+                          "EQ × Absolute interrogative × Falling-Q variety",
+                          "LexTALE × EQ × Absolute interrogative × Falling-Q variety")
   ) %>%
   ggplot(., aes(x = Estimate, y = Parameter)) + 
-  coord_cartesian(xlim = c(-2.75, 2.75)) + 
+  coord_cartesian(xlim = c(-4, 1.01)) + 
   scale_x_continuous(expand = c(0, 0)) + 
   geom_vline(xintercept = 0, lty = 3) + 
   geom_text(data = simp_labs_tib, hjust = 0, vjust = 0.5, size = 2.25, 
@@ -105,13 +101,14 @@ m_rq1_forest <- as_tibble(m_rq1) %>%
                slab_fill = viridis::viridis_pal(option = "B", begin = 0.25)(1), 
                point_size = 1.5) + 
   scale_y_discrete(limits = rev) + 
-  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+  labs(x = NULL, y = NULL)
 
 ggsave(
   filename = here::here("figs", "m_rq1_forest.png"),
   plot = m_rq1_forest,
-  width = 8,
-  height = 6,
+  width = 12,
+  height = 8,
   dpi = 300
 )
 
@@ -123,7 +120,7 @@ ggsave(
 # Conditional effects
 conditions <- data.frame(
   caribbean = setNames(c(0,1),
-                       c("Non-Caribbean","Caribbean")))
+                       c("Rising-Q variety","Falling-Q variety")))
 
 lt_st_me <- conditional_effects(
   m_rq1, 
@@ -154,14 +151,8 @@ rq_1_lextale_by_utterance_type <- plot(lt_st_me, plot = FALSE, line_args = list(
                      values = alpha(my_palette, 0.1)) +
   labs(y = "P(correct)", x = "LexTALE score") +
   ds4ling::ds4ling_bw_theme(base_size = 12) +
-  theme(
-    legend.background = element_blank(),
-    legend.position = c(0.5, 0.08),
-    legend.direction = "horizontal",
-    legend.key.size = unit(0.7, "cm"),
-    legend.text.align = 0.5
-  ) +
-  guides(color = guide_legend(override.aes = list(fill = NA, size = 2)))
+  guides(color = guide_legend(override.aes = list(fill = NA, size = 2))) +
+  theme(legend.position = "none")
 
 ggsave(
   filename = here::here("figs", "rq_1_lextale_by_utterance_type.png"),
@@ -178,7 +169,7 @@ ggsave(
 # Conditional effects
 conditions <- data.frame(
   caribbean = setNames(c(0,1),
-                       c("Non-Caribbean","Caribbean")))
+                       c("Rising-Q variety","Falling-Q variety")))
 
 eq_st_me <- conditional_effects(
   m_rq1, 
@@ -208,7 +199,7 @@ rq_1_eq_by_utterance_type <- plot(eq_st_me, plot = FALSE, line_args = list(size 
   ds4ling::ds4ling_bw_theme(base_size = 12) +
   theme(
     legend.background = element_blank(),
-    legend.position = c(0.5, 0.08),
+    legend.position = c(.7, .9),
     legend.direction = "horizontal",
     legend.key.size = unit(0.7, "cm"),
     legend.text.align = 0.5
@@ -250,9 +241,9 @@ facet_replace_3way <- tibble(
 # Set conditions for facetting
 conditions <- expand.grid(
   sentence_type = setNames(c('declarative-broad-focus', 'interrogative-total-yn'), 
-                           c("Broad focus\ndeclarative", "Interrogative\ny/n")),
+                           c("Broad focus\ndeclarative", "Absolute\ninterrogative")),
   caribbean = setNames(c(0,1),
-                       c("Non-Caribbean","Caribbean"))
+                       c("Rising-Q variety","Falling-Q variety"))
 )
 
 # Get wide range of EQ estimates
@@ -286,15 +277,15 @@ rq1_3way <- plot(lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] +
   facet_grid(caribbean ~ sentence_type,
              labeller = labeller(
                sentence_type = c(
-                 "Broad focus\ndeclarative" = "Broad focus declarative",
-                 "Absolute\ninterrogative" = "Absolute interrogative"
+                 "declarative-broad-focus" = "Broad focus declarative",
+                 "interrogative-total-yn" = "Absolute interrogative"
                ),
-               caribbean = c("0" = "Non-Caribbean", "1" = "Caribbean")
+               caribbean = c("0" = "Rising-Q variety", "1" = "Falling-Q variety")
              )) +
   labs(y = "P(correct)", x = "LexTALE score") +
   ds4ling::ds4ling_bw_theme(base_size = 13) +
   theme(
-    legend.position = c(0.8, 0.95),
+    legend.position = c(0.7, 0.95),
     legend.background = element_blank(),
     legend.direction = "horizontal",
     legend.key.size = unit(0.7, "cm"),
@@ -322,11 +313,11 @@ simp_y_labs <- c(
   "Intercept",
   "LexTALE",
   "EQ",
-  "Experimental group",
+  "Exposure group",
   "LexTALE × EQ",
-  "LexTALE × Experimental group",
-  'EQ × Experimental group',
-  'LexTALE × EQ × Experimental group'
+  "LexTALE × Exposure group",
+  'EQ × Exposure group',
+  'LexTALE × EQ × Exposure group'
 )
 
 simp_labs_tib <- tibble(
@@ -338,11 +329,11 @@ simp_labs_tib <- tibble(
     "Intercept",
     "LexTALE",
     "EQ",
-    "Experimental group",
+    "Exposure group",
     "LexTALE × EQ",
-    "LexTALE × Experimental group",
-    'EQ × Experimental group',
-    'LexTALE × EQ × Experimental group'
+    "LexTALE × Exposure group",
+    'EQ × Exposure group',
+    'LexTALE × EQ × Exposure group'
   ))
 
 m_rq2_forest <- as_tibble(m_rq2) %>% 
@@ -352,22 +343,22 @@ m_rq2_forest <- as_tibble(m_rq2) %>%
     Parameter == "b_Intercept" ~ "Intercept",
     Parameter == "b_lextale_std" ~ "LexTALE",
     Parameter == "b_eq_std" ~ "EQ",
-    Parameter == "b_group1" ~ "Experimental group",
+    Parameter == "b_group1" ~ "Exposure group",
     Parameter == "b_lextale_std:eq_std" ~ "LexTALE × EQ",
-    Parameter == "b_lextale_std:group1" ~ "LexTALE × Experimental group",
-    Parameter == "b_eq_std:group1" ~ "EQ × Experimental group",
-    Parameter == "b_lextale_std:eq_std:group1" ~ "LexTALE × EQ × Experimental group",
+    Parameter == "b_lextale_std:group1" ~ "LexTALE × Exposure group",
+    Parameter == "b_eq_std:group1" ~ "EQ × Exposure group",
+    Parameter == "b_lextale_std:eq_std:group1" ~ "LexTALE × EQ × Exposure group",
     TRUE ~ Parameter
   ),
   Parameter = fct_relevel(Parameter,
                           "Intercept",
                           "LexTALE",
                           "EQ",
-                          "Experimental group",
+                          "Exposure group",
                           "LexTALE × EQ",
-                          "LexTALE × Experimental group",
-                          'EQ × Experimental group',
-                          'LexTALE × EQ × Experimental group')
+                          "LexTALE × Exposure group",
+                          'EQ × Exposure group',
+                          'LexTALE × EQ × Exposure group')
   ) %>%
   ggplot(., aes(x = Estimate, y = Parameter)) + 
   coord_cartesian(xlim = c(-2.75, 2.75)) + 
@@ -403,7 +394,7 @@ lt_st_me_rq2 <- conditional_effects(
   ndraws = 300,
   int_conditions = list(lextale_std = c(-2.1, -1, 0, 1, 2.1)))
 
-group_labs <- c("Control","Experimental")
+group_labs <- c("Control group","Exposure group")
 
 # Main plot
 
@@ -418,14 +409,8 @@ rq_2_lextale_by_group <- plot(lt_st_me_rq2, plot = FALSE, line_args = list(size 
                      values = alpha(my_palette, 0.1)) +
   labs(y = "P(correct)", x = "LexTALE score") +
   ds4ling::ds4ling_bw_theme(base_size = 12) +
-  theme(
-    legend.background = element_blank(),
-    legend.position = c(0.5, 0.08),
-    legend.direction = "horizontal",
-    legend.key.size = unit(0.7, "cm"),
-    legend.text.align = 0.5
-  ) +
-  guides(color = guide_legend(override.aes = list(fill = NA, size = 2)))
+  guides(color = guide_legend(override.aes = list(fill = NA, size = 2))) +
+  theme(legend.position = "none")
 
 ggsave(
   filename = here::here("figs", "rq_2_lextale_by_group.png"),
@@ -447,7 +432,7 @@ eq_st_me_rq2 <- conditional_effects(
   ndraws = 300,
   int_conditions = list(eq_std = c(-2.1, -1, 0, 1, 2.1)))
 
-group_labs <- c("Control","Experimental")
+group_labs <- c("Control\ngroup","Exposure\ngroup")
 
 # Main plot
 
@@ -460,11 +445,11 @@ rq_2_eq_by_group <- plot(eq_st_me_rq2, plot = FALSE, line_args = list(size = 4))
   geom_hline(yintercept = 0.5, lty = 3) +
   scale_color_manual(name = NULL, labels = group_labs,
                      values = alpha(my_palette, 0.1)) +
-  labs(y = "P(correct)", x = "LexTALE score") +
+  labs(y = "P(correct)", x = "EQ score") +
   ds4ling::ds4ling_bw_theme(base_size = 12) +
   theme(
     legend.background = element_blank(),
-    legend.position = c(0.5, 0.08),
+    legend.position = c(.7, .9),
     legend.direction = "horizontal",
     legend.key.size = unit(0.7, "cm"),
     legend.text.align = 0.5
@@ -508,7 +493,7 @@ facet_replace_3way <- tibble(
 # Set conditions for facetting
 conditions <- data.frame(
   group = set_names(c('0','1'),
-                    c("Control","Experimental"))
+                    c("Control group","Exposure group"))
 )
 
 # Get wide range of EQ estimates
@@ -542,7 +527,7 @@ rq2_3way <- plot(rq2_lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] 
   labs(y = "P(correct)", x = "LexTALE score") +
   ds4ling::ds4ling_bw_theme(base_size = 13) +
   theme(
-    legend.position = c(0.8, 0.95),
+    legend.position = c(0.7, 0.95),
     legend.background = element_blank(),
     legend.direction = "horizontal",
     legend.key.size = unit(0.7, "cm"),
@@ -586,11 +571,11 @@ diff_draws <- exp_lex_eq_diffs %>%
   tidyr::unnest(cols = everything())  # if it's a list-column of draws
 
 # Calculate median and 95% HDI
-diff_summary <- describe_posterior(diff_draws$diff_neg1_1, ci = 0.95)
+diff_summary_plot <- describe_posterior(diff_draws$diff_neg1_1, ci = 0.95)
 
-median_val <- diff_summary$Median
-hdi_low <- diff_summary$CI_low
-hdi_high <- diff_summary$CI_high
+median_val <- diff_summary_plot$Median
+hdi_low <- diff_summary_plot$CI_low
+hdi_high <- diff_summary_plot$CI_high
 
 # Plot
 rq2_diffplot <- ggplot(diff_draws, aes(x = diff_neg1_1)) +
@@ -609,6 +594,114 @@ rq2_diffplot <- ggplot(diff_draws, aes(x = diff_neg1_1)) +
 ggsave(
   filename = here::here("figs", "rq2_diffplot.png"),
   plot = rq2_diffplot,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+### Lextale distributions ###
+
+rq1_lextale <- rq1 %>%
+  group_by(participant_id) %>%
+  summarise(lextale_tra = mean(lextale_tra), .groups = "drop") %>%
+  mutate(group = "") %>%
+  ggplot(aes(x = group, y = lextale_tra)) +
+  geom_violin(fill = "grey90", color = "grey50", alpha = 0.5, width = 0.8) +
+  geom_boxplot(width = 0.2, fill = "white", outlier.shape = NA) +
+  geom_jitter(width = 0.1, size = 2, color = "black", alpha = 0.7) +
+  labs(x = "RQ1 dataset", y = "LexTALE score") +
+  ds4ling::ds4ling_bw_theme(base_size = 13) +
+  coord_cartesian(ylim = c(-20,42))
+
+ggsave(
+  filename = here::here("figs", "rq1_lextale.jpeg"),
+  plot = rq1_lextale,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+rq2_lextale <- rq2 %>%
+  group_by(participant_id, group) %>%
+  summarise(lextale_tra = mean(lextale_tra), .groups = "drop") %>%
+  mutate(group = as.factor(if_else(
+    group == 0, "control", "exposure"))) %>%
+  ggplot(., aes(x = group, y = lextale_tra)) +
+  geom_violin(fill = "grey90", color = "grey50", alpha = 0.5, width = 0.8) +
+  geom_boxplot(width = 0.2, fill = "white", outlier.shape = NA) +
+  geom_jitter(width = 0.1, size = 2, color = "black", alpha = 0.7) +
+  labs(x = "RQ2 dataset", y = NULL) +
+  ds4ling::ds4ling_bw_theme(base_size = 13) +
+  coord_cartesian(ylim = c(-20,42)) +
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+
+ggsave(
+  filename = here::here("figs", "rq2_lextale.jpeg"),
+  plot = rq2_lextale,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+lextale_distributions <- rq1_lextale + rq2_lextale
+
+ggsave(
+  filename = here::here("figs", "lextale_distributions.jpeg"),
+  plot = lextale_distributions,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+### empathy distributions
+
+rq1_eq <- rq1 %>%
+  group_by(participant_id) %>%
+  summarise(eq_score = mean(eq_score), .groups = "drop") %>%
+  mutate(group = "") %>%
+  ggplot(aes(x = group, y = eq_score)) +
+  geom_violin(fill = "grey90", color = "grey50", alpha = 0.5, width = 0.8) +
+  geom_boxplot(width = 0.2, fill = "white", outlier.shape = NA) +
+  geom_jitter(width = 0.1, size = 2, color = "black", alpha = 0.7) +
+  labs(x = "RQ1 dataset", y = "EQ") +
+  ds4ling::ds4ling_bw_theme(base_size = 13) +
+  coord_cartesian(ylim = c(10,81))
+
+ggsave(
+  filename = here::here("figs", "rq1_eq.jpeg"),
+  plot = rq1_eq,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+rq2_eq <- rq2 %>%
+  group_by(participant_id, group) %>%
+  summarise(eq_score = mean(eq_score), .groups = "drop") %>%
+  mutate(group = as.factor(if_else(
+    group == 0, "control", "exposure"))) %>%
+  ggplot(., aes(x = group, y = eq_score)) +
+  geom_violin(fill = "grey90", color = "grey50", alpha = 0.5, width = 0.8) +
+  geom_boxplot(width = 0.2, fill = "white", outlier.shape = NA) +
+  geom_jitter(width = 0.1, size = 2, color = "black", alpha = 0.7) +
+  labs(x = "RQ2 dataset", y = NULL) +
+  ds4ling::ds4ling_bw_theme(base_size = 13) +
+  coord_cartesian(ylim = c(10,81)) +
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+
+ggsave(
+  filename = here::here("figs", "rq2_eq.jpeg"),
+  plot = rq2_eq,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+eq_distributions <- rq1_eq + rq2_eq
+
+ggsave(
+  filename = here::here("figs", "eq_distributions.jpeg"),
+  plot = eq_distributions,
   width = 8,
   height = 6,
   dpi = 300

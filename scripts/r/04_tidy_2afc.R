@@ -17,7 +17,7 @@
 # Tidy 2afc -------------------------------------------------------------------
 
 # Load speech rate data
-speech_rate <- read_csv(here("data", "tidy", "speech_rate_tidy.csv")) %>%
+speech_rate <- read_csv(here("data", "speech_rate_tidy.csv")) %>%
   select(speaker_variety, condition, sentence_type, sentence, sentence_dur)
 
 ### Experimental Data ###

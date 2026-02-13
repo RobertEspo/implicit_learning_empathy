@@ -1,0 +1,214 @@
+---
+title: "Response to Reviewers"
+author: "Robert Esposito"
+bibliography: "../../lit/exp_emp_bib.bib"
+format: pdf
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Set document defaults
+knitr::opts_chunk$set(
+  cache.extra = knitr::rand_seed, 
+  fig.retina = 2, 
+  echo = F, 
+  message = F, 
+  warning = F,
+  fig.asp = 0.5625,
+  out.width = "100%",
+  dpi = 300, 
+  fig.path = 'figs/', 
+  dev = c("png", "pdf")
+  )
+
+source(here::here("scripts","r","00_libs.R"))
+source(here::here("scripts","r","01_helpers.R"))
+source(here::here("scripts","r","02_load_data.R"))
+source(here("scripts","r","10_manuscript_stats.R"))
+```
+
+I am grateful to the time taken by the reviewers to read my paper and make suggestions. I believe that their insightful comments have increased the quality of this paper. I have made edits in the paper for the vast majority of the comments; where I have not made edits, I have indicated such and provided reasoning. Thank you for the opportunity to have this paper reviewed.
+
+# Reviewer 1
+
+## sociolinguistic information
+
+*The listeners are recruited based on whether they are familiar with some specific dialects of Spanish that use falling tunes to encode questions. This was checked through a yes/no screening question at the beginning of the study and, apart from this, little information is reported about their sociolinguistic background, and information on their exposure to Spanish or other languages besides English is not reported. Was information on this collected or still accessible somehow to the authors? There are multiple exposure related scenarios that, regardless of how the participants feel about their familiarity with those specific dialects, may have affected the results, including overall experience with Spanish, as well as with other languages; for example, exposure to any language in which questions have a falling intonation may have been a factor, since there is no reason to assume that we do not use all experience we have when interpreting an utterance. If the information is not available, it should be at least acknowledged that these factors may have influenced and possibly point out to unexplained variability in the data that may have resulted from this.*
+
+Sociolinguistic information has been added to the manuscript (the two additional tables in the section "Participants"). This includes age, reported gender, and number of languages reported. Additional information, such as the additional languages spoken or exposure to Spanish, was not collected.
+
+## intonational system descriptions
+
+*Along the same lines, the paper should provide a broader picture of the intonational systems of the languages involved (both English and Spanish), so that the reader can understand what kind of tunes they are most likely used to. The description of the intonational systems seems also relevant because otherwise it looks like the authors start from an assumption of a one-to-one tune-function mapping (e.g. there is one way to encode a question in both English and most Spanish varieties and this is the only question tune the participant have been exposed to), which is hardly a plausible case.*
+
+The section "L2 Intonation Acquisition" has been edited to include information about cues to Spanish and English yes-no questions, similarities and differences between the two, and relevant predictions from the LILt model based on them.
+
+## role of empathy
+
+*The hypothesis behind the effect of empathy stresses a lot the ability of empathetic people to retain information. It is not however clear what the link between empathy and this ability to retain information is and, more specifically, what it is that makes empathetic individuals with very little exposure to an unknown intonational pattern learn it faster than non-empathetic peers and how this is connected to previous studies. Without a spelled-out explanation, the paper seems to argue that empathetic people have better memory, which does not really fit the definition of empathy nor previous findings on the role of empathy on intonation which, in my understanding, points to the fact that empathy endows the individual with a higher ability to make use of contexts, experiences, and knowledge to decode intonation, including new forms, rather than having rigid mappings. This would also make the discussion section stronger.*
+
+The "causal" link has been edited to be "associative". However, in the section "Individual Differences in Empathy", more information on the relationship between empathy and the abilities mentioned by the reviewer has been further explored. 
+
+## lextale
+
+*More information about the proficiency test and how it relates to more standard ways of proficiency assessments would give the reader an idea of what the distribution in the lexical decision task means.*
+
+Direct comparisons between the LexTALE-ESP and other measures of proficiency were unable to be found. In lieu of direct comparison, @izura2014lexical['s] data on L1 Dutch L2 Spanish learners with 2.5 months of classroom experience and their LexTALE scores were included in the "LexTALE" section.
+
+## participant feedback
+
+*Was there any type of feedback provided in the exposure/training phase, so that we know whether people processed questions as questions?*
+
+The "Procedure" section has been updated to address whether feedback was given for each task.
+
+Original: Participants were recruited on Prolific.ac and completed all tasks in a single session. The experimental group first completed the “exposure” task. After each conversation, participants responded to a true-or-false question regarding the contents of the conversation.
+
+Both groups then completed the same 2AFC task. Participants were presented an audio file that was either a statement (broad focus) or question (absolute interrogative). Participants were instructed to determine as quickly and accurately as possible if the utterance they heard was a question or not. At the start of each audio, they were prompted on-screen with the question, “Is this a question?” and they responded with their keyboard by typing either “1” for “yes” or “0” for “no”. Afterwards, participants completed the LexTALE and Empathy Quotient.
+
+Edited: Participants were recruited on Prolific.ac and completed all tasks in a single session. Upon beginning the experiment, participants answered four questions:
+
+What variety of Spanish are you most familiar with? (free response); At what age did you begin learning Spanish? (dropdown: younger than 13; 13 or older); Are you proficient in any languages other than English/Spanish? (dropdown: yes; no); Are you familiar with Caribbean (e.g., Caribbean, Puerto Rican) or Galician Spanish? (dropdown: yes; no).
+
+The experimental group first completed the "exposure" task. After each conversation, participants responded to a true-or-false question regarding the contents of the conversation, for which they did not receive feedback.
+
+Both groups then began the 2AFC task. All participants completed 8 practice trials, for which they received feedback, and then completed the 88 experimental trials. Participants were instructed to determine as quickly and accurately as possible if the utterance they heard was a question or not. At the start of each audio, they were prompted on-screen with the question, "Is this a question?" and they responded with their keyboard by typing either "1" for "yes" or "0" for "no".
+
+Participants then completed began the LexTALE. They completed 12 practice trials, followed by the 90 experimental trials. Afterwards, participants completed the Empathy Quotient and ended the experiment.
+
+## participants' recognition of different varieties
+
+*Was any information collected about whether participants actually realized that there were different Spanish varieties throughout the study? Were there easily identifiable cues beside intonational patterns that could have facilitated the distinction across varieties?*
+
+Participants were given no clear indication that they were listening to multiple varieties. More information on this is added to the "Limitations and Future Directions" section.
+
+Relevant acoustic cues that may have been relevant to sentence-type identification have been added to the section "L2 Intonation Acquisition".
+
+## labels
+
+*Finally, the authors should consider using variable names that mention conditions that are of direct interest to the readers, for example exposure and non-exposure groups, falling or rising-question varieties, and so on. Variable names like Caribbean, control and experimental, are not very transparent labels regarding the information that is needed to the reader and without a full knowledge of which variety uses which patterns or what the experimental conditions were in the researchers’ mind, the reader ends up going back and forth from results to method or gets confused about which group did what. Also, some of the plots should be redesigned so that all labels are readable.*
+
+Labels have been updated in agreement with the suggested labels in plots and prose. "Non-Caribbean" and "Caribbean" have been replaced with "Rising-Q variety" and "Falling-Q variety". "Control group" and "Experimental group" have been replaced with "Control group" and "Exposure group". 
+
+# Reviewer 2
+
+## reframe causation to assocation
+
+*The manuscript refers to a “causal link between empathy and intonation” (p. 3). It is not clear how causality could be inferred from the present design. In my opinion, the study seems capable of showing association, not causation. Other individual-difference factors—such as musical aptitude—could plausibly underlie both higher empathy scores and greater accuracy in interpreting communicative intent? The authors should either justify the causal interpretation or reframe the claim as correlational.*
+
+The link has been reframed as associative instead of causal.
+
+Original: The present study contributes to these lines of research by investigating the causal link between empathy and intonation in L2 populations. I examined a situation common to L2 learners...
+
+Edited: The present study contributes to these lines of research by investigating the associative link between empathy and intonation in L2 populations. I examined a situation common to L2 learners...
+
+## clarify RQs and hypotheses
+
+*In the section “The present study”, the authors state that the study investigates whether L1 English L2 Spanish learners can rapidly acquire accurate perception of Spanish absolute interrogatives with low boundary tones. It is not fully clear that this is the central aim of the research, and the statement seems misaligned with the later research questions. The research questions and hypotheses are presented in a confusing manner; they do not parallel each other conceptually or syntactically. RQ2 is particularly unclear and could be reformulated. I strongly recommend rewriting the RQs and hypotheses in a consistent format so that each question corresponds directly to a measurable hypothesis.*
+
+The original RQs are the following:
+
+1. Do higher-empathy L1 English L2 Spanish speakers make greater use of prosodic cues to determine if a Spanish utterance is an interrogative?
+
+2. Do higher-empathy L1 English L2 Spanish speakers make greater use of prosodic input from dialects to which they have little or no exposure to extract prosodic features?
+
+These have since been edited for greater clarity:
+
+1. Do higher-empathy, compared to lower-empathy, L1 English L2 Spanish learners display higher accuracy when identifying a Spanish utterance as a declarative versus interrogative?
+
+2. Do higher-empathy, compared to lower-empathy, L1 English L2 Spanish learners display higher accuracy when identifying a Spanish utterance, from a variety to which they have little or no previous exposure, as an interrogative if they are briefly exposed to conversations from that variety?
+
+## justify RQ1
+
+*RQ1 has already been addressed in Casillas et al. (2023), the author may explain what novel contribution the present study provides, or else reconsider whether this RQ is necessary. The manuscript refers extensively to Casillas et al. (2023) in both the motivation and interpretation of results. Excessive comparison may confuse readers about the distinct contribution of this study.*
+
+I believe that RQ1 remains necessary. Replicability of methods and results remains an important aspect that is oftentimes avoided or ignored in research [@casillas2025opening], although this is not a *full* replication of @casillas2023using. The following has been added to "The Present Study" section, which includes differences between @casillas2023using and the current study:
+
+Replication is an important aspect of research that is oftentimes sidelined [@casillas2025opening], and the current data allows for a more nuanced understanding of previous findings due to a slightly different design (i.e., within the two-alternative forced choice task: fewer Spanish varieties, fewer sentence types, and more trials).
+
+## replace "native" for L1
+
+*The term “native” appears only in the introduction. The author should verify whether this is the intended terminology throughout the manuscript, and revise for consistency or conceptual precision if needed.*
+
+"Native" appears only in the abstract, which has since been replaced with "first language":
+
+Original: The present study investigated whether native English L2 Spanish learners with higher empathy more effectively acquire a novel intonation contour from Puerto Rican and Cuban Spanish: absolute interrogatives with low boundary tones.
+
+Edited: The present study investigated whether first language (L1) English L2 Spanish learners with higher empathy more effectively acquire a novel intonation contour from Puerto Rican and Cuban Spanish: absolute interrogatives with low boundary tones.
+
+## add sociolinguistic information for participants
+
+*Because the study deals with individual differences, it would be valuable to include more detail about participant characteristics. Information on age, proficiency profiles, length and context of exposure to Spanish, and any relevant background variables would strengthen the interpretation of the analyses.*
+
+Sociolinguistic information has been added to the manuscript (the two additional tables in the section "Participants"). This includes age, reported gender, and number of languages reported. Additional information, such as the additional languages spoken or exposure to Spanish, was not collected.
+
+## is the exposure task similar to classroom exposure?
+
+*The design of the exposure task deserves more explicit reflection. Was the task ecologically similar to activities that learners typically encounter in the classroom? A brief discussion of its pedagogical realism would allow readers to better understand the learning implications of the findings.*
+
+The section "L2 Intonation in the Language Classroom" has been updated to include information about what learners typically encounter in a classroom, focusing on at-home language programs (as opposed to e.g., study abroad). 
+
+## lextale reflections
+
+*While Lextale is widely used, it is primarily a measure of advanced lexical proficiency. The authors should consider whether relying on this measure introduces limitations for a study with strong emphasis on individual differences and intonation acquisition. A brief reflection in the limitations section could be appropriate.*
+
+Brief reflection with alternative measures added to "Discussion ~ RQ1" section.
+
+## Justify difficulties of yes-no questions with low boundary tones
+
+*On page 6, the claim that L1 English L2 Spanish learners have difficulties accurately interpreting absolute interrogatives with low boundary tones requires one or more supporting references.*
+
+Relevant citations have been added:
+
+Furthermore, the reviewed studies, on the whole, contradict predictions from the LILt model that L1 English L2 Spanish learners experience greater ease in interpreting Spanish yes-no questions with falling boundary tones as questions [@trimble2013perceiving; @casillas2023using; @george2024l2], such as those in Caribbean varieties.
+
+## Results/Discussion: Conflation of variables and operationalization of those variables?
+
+*In both the Results and Discussion, there are occasional conflations of variables with the operationalization of those variables. Clearer conceptual separation would make the statistical interpretation easier to follow.*
+
+Labels have been updated in agreement with the suggested labels in plots and prose. "Non-Caribbean" and "Caribbean" have been replaced with "Rising-Q variety" and "Falling-Q variety". "Control group" and "Experimental group" have been replaced with "Control group" and "Exposure group". 
+
+## typo
+
+*Page 3: Typographical error emapthy should be corrected to empathy.*
+
+Typo corrected.
+
+## hedge novelty
+
+*Adding “to our knowledge” would appropriately hedge claims of novelty.*
+
+I believe that Reviewer 2 is referring to this line:
+
+Apart from this one example, there has been no modern SLA research relating empathy to L2 perceptual development.
+
+I have edited it, as suggested:
+
+Apart from this one example, the author knows of no other modern SLA research relating empathy to L2 perceptual development.
+
+## remove first person
+
+*The use of first-person singular is, to my knowledge, uncommon in academic writing; if kept, the choice should be intentional.*
+
+The first-person singular has been entirely removed from the paper. 
+
+## clarify Prolific experiments
+
+*The manuscript describes the study as comprising two experiments, but the structure appears to be one experiment with two tasks/tests. Clarifying this terminology would improve methodological transparency.*
+
+Original: Two experiments were launched on the online experimental platform Prolific.ac: one for the experimental group and one for the control group. Upon beginning either experiment, all participants responded to the question "Are you familiar with Caribbean (e.g., Caribbean, Puerto Rican) or Galician Spanish?", which served as a proxy for if the individual was familiar with a variety that signals absolute interrogatives with a final fall.
+
+Edited: Two studies were launched on the online experimental platform Prolific.ac, which were different in only if it included the exposure task ("experimental") or not ("control"). Upon beginning either experiment, all participants responded to the question "Are you familiar with Caribbean (e.g., Caribbean, Puerto Rican) or Galician Spanish?", which served as a proxy for if the individual was familiar with a variety that signals absolute interrogatives with a final fall.
+
+Original: For this model, all participants from the control experiment (n = `r length(unique(rq1$participant_id))`) and all stimuli were included for analysis.
+
+Edited: For this model, all participants from the control group (n = `r length(unique(rq1$participant_id))`) and all stimuli were included for analysis.
+
+## add time to complete experiments
+
+*If information is available on the time required to complete the tasks, including it would be helpful for replicability and for interpreting learner effort.*
+
+The completion time for all tasks overall was included in the original manuscript, but "minutes" was left out, which has since been corrected. Furthermore, information about completion time has been moved from "Participants" section to "Tasks" section, and a table included with information on completion times.
+
+# References

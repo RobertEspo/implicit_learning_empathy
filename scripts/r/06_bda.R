@@ -5,22 +5,21 @@
 # Source libraries, helpers, load data ----------------------------------------
 
 source(here::here("scripts", "r", "02_load_data.R"))
+source(here::here("scripts", "r", "05_combine_tasks.R"))
 
 # ------------------------------------------------------------------------------
 
 # Set weakly informative priors
 response_priors <- c(
-  prior(normal(0, 0.3), class = b),
-  prior(cauchy(0, 0.1), class = sd), 
-  prior(lkj(8), class = cor)
+  prior(normal(0, 0.4), class = b),
+  prior(cauchy(0, 0.3), class = sd)
 )
 
 # ------------------------------------------------------------------------------
 
 m_rq1 <- brm(
   formula = correct ~ 0 + Intercept + lextale_std * eq_std * sentence_type * caribbean + 
-    (1 + sentence_type | participant_id) + 
-    (1 + lextale_std * eq_std | speaker_variety) +
+    (1 | participant_id) + 
     (1 | item), 
   data = rq1 %>% filter(rt_adj < 10),
   prior = response_priors, 
@@ -32,20 +31,39 @@ m_rq1 <- brm(
 )
 
 # ------------------------------------------------------------------------------
+response_priors_2 <- c(
+  prior(normal(0, 0.4), class = b),
+  prior(cauchy(0, 0.3), class = sd)
+)
 
 m_rq2 <- brm(
   formula = correct ~ 0 + Intercept + lextale_std * eq_std * group + 
     (1 | participant_id) +
-    (1 + lextale_std * eq_std | speaker_variety) +
     (1 | item), 
   data = rq2 %>% filter(rt_adj < 10),
-  prior = response_priors, 
-  warmup = 2000, iter = 4000, chains = 4, 
+  prior = response_priors_2, 
+  warmup = 4000, iter = 8000, chains = 4, 
   family = "bernoulli", 
   cores = 4, 
   control = list(adapt_delta = 0.99, max_treedepth = 20), 
   file = here("models", "m_rq2")
 )
+
+diag_m_rq2 <- mcmc_diagnostics_summary(m_rq2, rhat_threshold = 1.01, ess_threshold = 400)
+print(diag_m_rq2)
+
+ppc_result_m_rq2 <- posterior_predictive_check(
+  model = m_rq2,
+  observed_data = rq2 %>% filter(rt_adj < 10) %>% pull(correct),
+  n_samples = 1000,
+  test_statistics = c("mean", "sd", "median", "min", "max", "skewness", "kurtosis"),
+  plot = FALSE
+)
+print(ppc_result_m_rq2)
+
+pp_check(m_rq2)
+
+plot(m_rq2)
 
 # ------------------------------------------------------------------------------
 # lextale rq2
@@ -89,32 +107,4 @@ m_eq_rq2 <- brm(
   family = "gaussian", 
   cores = parallel::detectCores(), 
   file = here("models", "m_eq_rq2")
-)
-
-# ------------------------------------------------------------------------------
-# reaction time
-###
-
-### priors ###
-rt_priors_shiftedln <- c(
-  set_prior('normal(6, 1)', class = 'b', coef = 'Intercept'),
-  set_prior('normal(1, 0.5)', class = 'sigma'),
-  set_prior('normal(0, 0.3)', class = 'b'),
-  set_prior('normal(0.5, 0.2)', class = 'sd')  
-)
-
-### model ###
-
-b_rt_nat_04 <- brm(
-  formula = rt ~ 0 + Intercept + lextale_std * eq_std * sentence_type * caribbean + 
-    (1 | player_id) +
-    (1 | item),
-  data = rq1_rt, 
-  warmup = 4000, iter = 8000, chains = 4,
-  family = shifted_lognormal(link = "identity"),
-  prior = rt_priors_shiftedln,
-  cores = parallel::detectCores(), 
-  backend = "cmdstanr", 
-  control = list(adapt_delta = 0.99, max_treedepth = 20),
-  file = here("models", "b_rt_nat_04")
 )

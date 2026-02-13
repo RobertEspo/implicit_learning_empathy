@@ -289,21 +289,6 @@ my_posterior_summary <- . %>%
   select(Parameter, Median, HDI, `% in ROPE` = ROPE_Percentage, MPE = pd) %>% 
   report_posterior(., param = "Posterior")
 
-################################################################################
-# Load raw data
 
-# exp_path <- "data/prolific_experimental_group"
-# ctrl_path <- "data/prolific_control_group"
-
-# exp_files <- list.files(exp_path, pattern = "\\.csv$", full.names = TRUE)
-# ctrl_files <- list.files(ctrl_path, pattern = "\\.csv$", full.names = TRUE)
-
-# exp_list <- map(exp_files, read_csv)
-# ctrl_list <- map(ctrl_files, read_csv)
-
-# names(exp_list) <- basename(exp_files)
-# names(ctrl_list) <- basename(ctrl_files)
-
-################################################################################
 
 

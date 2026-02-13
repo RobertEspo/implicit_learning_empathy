@@ -1,9 +1,12 @@
+# This script loads all tidy data
+# For raw data & tidying of raw data, see 05_combine_tasks.R
+
 source(here::here("scripts", "r", "00_libs.R"))
 source(here::here("scripts","r","01_helpers.R"))
 
 # Load tables
-csv_files <- list.files(here("tables"), pattern = "\\.csv$", full.names = TRUE)
-for (file in csv_files) {
+table_csv_files <- list.files(here("tables"), pattern = "\\.csv$", full.names = TRUE)
+for (file in table_csv_files) {
   df_name <- str_remove(basename(file), "\\.csv$")
   df <- read_csv(file)
   assign(df_name, df)
@@ -17,8 +20,16 @@ for (file in rds_files) {
   assign(model_name, model)
 }
 
-# load data
-all_tasks_tidy <- read_csv(here("data","tidy","all_tasks_tidy.csv"))
+# Load tidy data
+
+csv_files <- list.files(here("data","tidy"), pattern = "\\.csv$", full.names = TRUE)
+for (file in csv_files) {
+  df_name <- str_remove(basename(file), "\\.csv$")
+  df <- read_csv(file)
+  assign(df_name, df)
+}
+
+# Tidy rq1 and rq2 data
 
 # dataset for rq1
 rq1 <- all_tasks_tidy %>%
@@ -34,6 +45,7 @@ rq1 <- all_tasks_tidy %>%
     speaker_variety = as.factor(speaker_variety),
     group = factor(group),
     sentence_type = as.factor(sentence_type),
+    target = as.factor(target),
     item = factor(item),
     caribbean = factor(caribbean),
     familiar_with_fall = factor(familiar_with_fall))
@@ -56,17 +68,3 @@ rq2 <- all_tasks_tidy %>%
     group = factor(group),
     sentence_type = as.factor(sentence_type),
     item = factor(item))
-
-# dataset for rq1 rt
-rq1_rt <- rq1 %>%
-  filter(rt_adj < 10, correct == 1) %>%
-  mutate(rt = rt_adj + abs(min(rt_adj)) + 0.01)
-
-# datset for rq2 rt
-rq2_rt <- rq2 %>%
-  filter(rt_adj < 10, correct == 1) %>%
-  mutate(rt = rt_adj + abs(min(rt_adj)) + 0.01)
-
-# ddm dataset
-ddm_sims <- read_csv(here("data","tidy","ddm_sims.csv"))
-ddm_estimates <- read_csv(here("data","tidy","ddm_estimates.csv"))
