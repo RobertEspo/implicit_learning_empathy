@@ -59,6 +59,7 @@ ppc_result_m_rq2 <- posterior_predictive_check(
   test_statistics = c("mean", "sd", "median", "min", "max", "skewness", "kurtosis"),
   plot = FALSE
 )
+
 print(ppc_result_m_rq2)
 
 pp_check(m_rq2)

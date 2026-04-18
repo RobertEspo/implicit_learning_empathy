@@ -45,14 +45,14 @@ knitr::opts_chunk$set(
   out.width = "100%",
   dpi = 300, 
   fig.path = 'figs/', 
-  dev = c("jpeg", "pdf")
+  dev = c("png", "pdf")
   )
 
 source(here::here("scripts","r","00_libs.R"))
 source(here::here("scripts","r","01_helpers.R"))
 source(here::here("scripts","r","02_load_data.R"))
 source(here("scripts","r","10_manuscript_stats.R"))
-source(here::here("scripts","r","07_plots_bw.R"))
+source(here::here("scripts","r","07_plots.R"))
 ```
 
 Currently, most second language acquisition (SLA) phonological models focus primarily on segmental features, while suprasegmental features receive comparatively little theoretical or pedagogical attention. Intonation, the modulation of pitch across an utterance, is one such understudied feature [@rao2019key; @jenkins20045], despite its critical role in communication. It can signal sentence type [@prieto2010transcription], speaker commitment [@orrico2020tonal], or politeness [@devis2014intonation], among many other diverse functions. Given the many-to-many mappings between sound and meaning, second language (L2) learners often struggle with intonation, in part due to transfer effects from their first language [@trofimovich2006learning; @mennen2015beyond]. Emerging evidence indicates that target-like perception of intonation is influenced by pragmatic skills, particularly empathy [@casillas2023using]. This aligns with findings in monolingual (L1) populations, where higher empathy is associated with increased sensitivity to intonational contours [@esteve2020empathy; @esteve2016role; @orrico2025individual; @orrico2020individual].
@@ -262,7 +262,7 @@ Spanish proficiency with the Lexical Test for Advanced Learners of Spanish [LexT
 
 To assess how participants performed on this measure, descriptive statistics and a regression model were computed. @tbl-lextale shows the descriptive statistics of LexTALE scores from the participant samples used to address RQ1 and RQ2. A Bayesian regression model was fit to LexTALE score as a function of *group* (baseline condition = control group). The intercept estimate was &beta; = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Intercept", Median)` (HDI = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Intercept", HDI)`). Relative to the baseline, the exposure group was estimated to score slightly lower (&beta; = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Experimental group", Median)`, HDI = `r pull_from_tib(m_lextale_rq2_table, Parameter, "Experimental group", HDI)`), but the wide HDI indicates no meaningful difference between the two groups.
 
-@fig-lextale_distributions plots the LexTALE score distributions for individual datasets used for RQ1 and RQ2. Note that few participants reach the threshold for what is considered an "advanced" learner (i.e., >25 points); the majority of participants would be classified as having "low to medium" proficiency @izura2014lexical.
+@fig-lextale_distributions plots the LexTALE score distributions for individual datasets used for RQ1 and RQ2. Note that few participants reach the threshold for what is considered an "advanced" learner (i.e., >25 points); the majority of participants would be classified as having "low to medium" proficiency [@izura2014lexical].
 
 ```{r}
 #| label: tbl-lextale
@@ -315,7 +315,7 @@ The exposure group first completed the "exposure" task. After listening to each 
 
 ## Statistical Analysis
 
-Two statistical analyses are reported. Both model response accuracy using Bayesian multilevel logistic regression. Both models' likelihoods were Bernoulli distributed with logit link functions. All continuous variables were standardized. The criterion, *response*, was coded as "1" for correct responses and "0" for incorrect responses. That is, the models represented the probability of accurately responding to the prompt, "Is this a question?". Both models included group-level effects for participants, speaker variety, and items. The slope for *utterance type* varied for the participant effect, as did the *LexTALE* by *EQ* interaction for the speaker variety effect.
+Two statistical analyses are reported. Both model response accuracy using Bayesian multilevel logistic regression. Both models' likelihoods were Bernoulli distributed with logit link functions. All continuous variables were standardized. The criterion, *response*, was coded as "1" for correct responses and "0" for incorrect responses. That is, the models represented the probability of accurately responding to the prompt, "Is this a question?". Both models included group-level effects for participant and item.
 
 The first analysis addressing RQ1 considered response accuracy for the population effects *variety* (rising-question varieties [RQV]; falling-question varieties [FQV]), *utterance type* (broad focus declarative; absolute interrogative), *LexTALE score*, *EQ*, and the higher order interactions. The intercept represented the log-odds response accuracy of a declarative produced by a RQV speaker at the average proficiency and EQ levels. For this model, all participants from the control group (n = `r length(unique(rq1$participant_id))`) and all stimuli were included for analysis.
 
@@ -338,7 +338,7 @@ The first analysis addressed RQ1, which aimed to replicate findings from @casill
 #| fig-cap: Forest plot of model for RQ1.
 
 knitr::include_graphics(
-  here("figs", "m_rq1_forest_bw.jpeg")
+  here("figs", "m_rq1_forest.png")
   )
 ```
 
@@ -352,17 +352,17 @@ In the case of FQV absolute interrogatives, participants correctly identified se
 #| label: fig-m-rq1-eq-lextale
 #| fig-cap: Effect of LexTALE (A) and EQ (B) by variety and utterance type. 
 
-knitr::include_graphics(here("figs", "rq1_eq_lextale_patchwork_bw.jpeg"))
+knitr::include_graphics(here("figs", "rq1_eq_lextale_patchwork.png"))
 ```
 
 Lastly, the model estimated the proficiency by EQ interaction (@fig-m-rq1-3way-interaction). There was strong evidence that the proficiency effect was modulated by EQ only for RQV absolute interrogatives. As an individual increases in proficiency, EQ becomes more influential as a predictor. The relationship is exemplified by holding proficiency at 2 SD above the mean (or a LexTALE score of `r specify_decimal((4 * sd(rq2$lextale_tra) + mean(rq2$lextale_tra)),2)`) and varying EQ between -2 (EQ = `r specify_decimal((-2 * sd(rq1$eq_score) + mean(rq2$eq_score)),2)`) and +2 (EQ = `r specify_decimal((2 * sd(rq1$eq_score) + mean(rq2$eq_score)),2)`). At -2, response accuracy is at `r specify_decimal(as.data.frame(rq1_exp_probs)[1,5] * 100,2)`% [`r specify_decimal(as.data.frame(rq1_exp_probs)[1,6] * 100,2)`%, `r specify_decimal(as.data.frame(rq1_exp_probs)[1,7] * 100,2)`%], meaningfully lower than at +1 `r specify_decimal(as.data.frame(rq1_exp_probs)[2,5] * 100,2)`% [`r specify_decimal(as.data.frame(rq1_exp_probs)[2,6] * 100,2)`%, `r specify_decimal(as.data.frame(rq1_exp_probs)[2,7] * 100,2)`%].
 
 ```{r}
 #| label: fig-m-rq1-3way-interaction
-#| fig-cap: Probability corrected predicted by proficiency, faceted by sentence type and Spanish variety. The three lines are representative of EQ at -1, 0, and 1 standard deviation.
+#| fig-cap: Probability correct predicted by proficiency, faceted by sentence type and Spanish variety. The three lines are representative of EQ at -1, 0, and 1 standard deviation.
 
 knitr::include_graphics(
-  here("figs", "rq1_3way_bw.jpeg")
+  here("figs", "rq1_3way.png")
   )
 ```
 
@@ -377,7 +377,7 @@ The second analysis addressed RQ2, which asked whether L2 Spanish learners with 
 #| fig-cap: Forest plot of the model used for RQ2.
 
 knitr::include_graphics(
-  here("figs", "m_rq2_forest_bw.jpeg")
+  here("figs", "m_rq2_forest.png")
   )
 ```
 
@@ -388,7 +388,7 @@ knitr::include_graphics(
 #| fig-cap: Effect of LexTALE (A) and EQ (B) by group.
 
 knitr::include_graphics(
-  here("figs", "rq2_eq_lextale_patchwork_bw.jpeg")
+  here("figs", "rq2_eq_lextale_patchwork.png")
   )
 ```
 
@@ -401,7 +401,7 @@ Although no effect was found for empathy alone, a weak interaction between empat
 #| fig-cap: Probability correct predicted by proficiency in the control and exposure groups. The three lines are representative of EQ at -1, 0, and 1 standard deviation.
 
 knitr::include_graphics(
-  here("figs", "rq2_3way_bw.jpeg")
+  here("figs", "rq2_3way.png")
   )
 ```
 

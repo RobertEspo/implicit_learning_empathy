@@ -1,0 +1,9 @@
+project:
+  title: "Rapid Acquisition of a Novel Intonation Contour by High-Empathy Individuals"
+  render:
+    - "*.qmd"
+    - "!./docs/lit/"
+    - "README.qmd"
+
+bibliography: ./lit/exp_emp_bib.bib
+csl: ./lit/apa.csl

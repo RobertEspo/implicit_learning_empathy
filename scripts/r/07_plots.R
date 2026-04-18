@@ -199,7 +199,7 @@ rq_1_eq_by_utterance_type <- plot(eq_st_me, plot = FALSE, line_args = list(size 
   ds4ling::ds4ling_bw_theme(base_size = 12) +
   theme(
     legend.background = element_blank(),
-    legend.position = c(.7, .9),
+    legend.position = c(.7, .95),
     legend.direction = "horizontal",
     legend.key.size = unit(0.7, "cm"),
     legend.text.align = 0.5
@@ -285,7 +285,7 @@ rq1_3way <- plot(lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] +
   labs(y = "P(correct)", x = "LexTALE score") +
   ds4ling::ds4ling_bw_theme(base_size = 13) +
   theme(
-    legend.position = c(0.7, 0.95),
+    legend.position = c(0.7, 0.65),
     legend.background = element_blank(),
     legend.direction = "horizontal",
     legend.key.size = unit(0.7, "cm"),

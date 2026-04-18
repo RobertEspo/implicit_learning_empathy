@@ -1,6 +1,6 @@
 ---
 title: "Response to Reviewers"
-author: "Robert Esposito"
+author: "anonymous"
 bibliography: "../../lit/exp_emp_bib.bib"
 format: pdf
 ---
