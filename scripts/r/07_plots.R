@@ -26,7 +26,7 @@ simp_y_labs <- c(
 
 simp_labs_tib <- tibble(
   y = simp_y_labs,
-  x = -3.5
+  x = -4.75
 ) %>%
   mutate(y = fct_relevel(
     y,
@@ -92,7 +92,7 @@ m_rq1_forest <- as_tibble(m_rq1) %>%
                           "LexTALE × EQ × Absolute interrogative × Falling-Q variety")
   ) %>%
   ggplot(., aes(x = Estimate, y = Parameter)) + 
-  coord_cartesian(xlim = c(-4, 1.01)) + 
+  coord_cartesian(xlim = c(-5, 1.01)) + 
   scale_x_continuous(expand = c(0, 0)) + 
   geom_vline(xintercept = 0, lty = 3) + 
   geom_text(data = simp_labs_tib, hjust = 0, vjust = 0.5, size = 2.25, 
@@ -145,7 +145,8 @@ my_palette <- viridis::viridis_pal(option = "B", end = 0.85)(2)
 rq_1_lextale_by_utterance_type <- plot(lt_st_me, plot = FALSE, line_args = list(size = 4))[[1]] +
   scale_x_continuous(expand = c(0, 0)) +
   coord_cartesian(ylim = c(0, 1.01)) +
-  geom_line(aes(group = effect2__, color = effect2__), size = 1.5) +
+  geom_line(aes(group = effect2__), size = 2, 
+            color = rep(viridis::viridis_pal(option = "B", end = 0.8)(2), each = 5, times = 2)) +
   geom_hline(yintercept = 0.5, lty = 3) +
   scale_color_manual(name = NULL, labels = sentence_labs,
                      values = alpha(my_palette, 0.1)) +
@@ -191,7 +192,8 @@ my_palette <- viridis::viridis_pal(option = "B", end = 0.85)(2)
 rq_1_eq_by_utterance_type <- plot(eq_st_me, plot = FALSE, line_args = list(size = 4))[[1]] +
   scale_x_continuous(expand = c(0, 0)) +
   coord_cartesian(ylim = c(0, 1.01)) +
-  geom_line(aes(group = effect2__, color = effect2__), size = 1.5) +
+  geom_line(aes(group = effect2__), size = 2, 
+            color = rep(viridis::viridis_pal(option = "B", end = 0.8)(2), each = 5, times = 2)) +
   geom_hline(yintercept = 0.5, lty = 3) +
   scale_color_manual(name = NULL, labels = sentence_labs,
                      values = alpha(my_palette, 0.1)) +
@@ -221,8 +223,8 @@ rq1_eq_lextale_patchwork <- rq_1_lextale_by_utterance_type + rq_1_eq_by_utteranc
 ggsave(
   filename = here::here("figs", "rq1_eq_lextale_patchwork.png"),
   plot = rq1_eq_lextale_patchwork,
-  width = 8,
-  height = 6,
+  width = 15,
+  height = 10,
   dpi = 300
 )
 
@@ -264,16 +266,15 @@ lt_eq_3way <- conditional_effects(m_rq1,
                                   int_conditions = int_conditions
 )
 
-rq1_3way <- plot(lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] +
-  aes(color = factor(eq_std)) +
-  geom_line(aes(group = effect2__), size = 2) +
+rq1_3way <- plot(lt_eq_3way, plot = FALSE, line_args = list(size = 4))[[1]] +
+    geom_line(aes(group = effect2__), size = 2, 
+              color = rep(viridis::viridis_pal(option = "B", end = 0.8)(3), each = 100, times = 4)) +
   coord_cartesian(xlim = c(-1, 4.2), ylim = c(0, 1)) +
   scale_x_continuous(expand = c(0, 0)) +
   geom_hline(yintercept = 0.5, lty = 3) +
   scale_color_manual(
     name = "Empathy quotient",
-    values = viridis::viridis_pal(option = "B", end = 0.8)(3)
-  ) +
+    values = alpha(viridis::viridis_pal(option = "B", end = 0.8)(3), .1)) +
   facet_grid(caribbean ~ sentence_type,
              labeller = labeller(
                sentence_type = c(
@@ -285,7 +286,7 @@ rq1_3way <- plot(lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] +
   labs(y = "P(correct)", x = "LexTALE score") +
   ds4ling::ds4ling_bw_theme(base_size = 13) +
   theme(
-    legend.position = c(0.7, 0.65),
+    legend.position = c(0.2, 0.1),
     legend.background = element_blank(),
     legend.direction = "horizontal",
     legend.key.size = unit(0.7, "cm"),
@@ -297,8 +298,8 @@ rq1_3way <- plot(lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] +
 ggsave(
   filename = here::here("figs", "rq1_3way.png"),
   plot = rq1_3way,
-  width = 8,
-  height = 6,
+  width = 15,
+  height = 10,
   dpi = 300
 )
 
@@ -361,7 +362,7 @@ m_rq2_forest <- as_tibble(m_rq2) %>%
                           'LexTALE × EQ × Exposure group')
   ) %>%
   ggplot(., aes(x = Estimate, y = Parameter)) + 
-  coord_cartesian(xlim = c(-2.75, 2.75)) + 
+  coord_cartesian(xlim = c(-2.75, 1.01)) + 
   scale_x_continuous(expand = c(0, 0)) + 
   geom_vline(xintercept = 0, lty = 3) + 
   geom_text(data = simp_labs_tib, hjust = 0, vjust = 0.5, size = 2.25, 
@@ -370,7 +371,8 @@ m_rq2_forest <- as_tibble(m_rq2) %>%
                slab_fill = viridis::viridis_pal(option = "B", begin = 0.25)(1), 
                point_size = 1.5) + 
   scale_y_discrete(limits = rev) + 
-  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+  labs(x = NULL, y = NULL)
 
 ggsave(
   filename = here::here("figs", "m_rq2_forest.png"),
@@ -403,8 +405,9 @@ my_palette <- viridis::viridis_pal(option = "B", end = 0.85)(2)
 rq_2_lextale_by_group <- plot(lt_st_me_rq2, plot = FALSE, line_args = list(size = 4))[[1]] +
   scale_x_continuous(expand = c(0, 0)) +
   coord_cartesian(ylim = c(0, 1.01)) +
-  geom_line(aes(group = effect2__, color = effect2__), size = 1.5) +
-  geom_hline(yintercept = 0.5, lty = 3) +
+    geom_line(aes(group = effect2__), size = 2, 
+              color = rep(viridis::viridis_pal(option = "B", end = 0.8)(2), each = 5)) +
+    geom_hline(yintercept = 0.5, lty = 3) +
   scale_color_manual(name = NULL, labels = group_labs,
                      values = alpha(my_palette, 0.1)) +
   labs(y = "P(correct)", x = "LexTALE score") +
@@ -441,7 +444,8 @@ my_palette <- viridis::viridis_pal(option = "B", end = 0.85)(2)
 rq_2_eq_by_group <- plot(eq_st_me_rq2, plot = FALSE, line_args = list(size = 4))[[1]] +
   scale_x_continuous(expand = c(0, 0)) +
   coord_cartesian(ylim = c(0, 1.01)) +
-  geom_line(aes(group = effect2__, color = effect2__), size = 1.5) +
+  geom_line(aes(group = effect2__), size = 2, 
+            color = rep(viridis::viridis_pal(option = "B", end = 0.8)(2), each = 5)) +
   geom_hline(yintercept = 0.5, lty = 3) +
   scale_color_manual(name = NULL, labels = group_labs,
                      values = alpha(my_palette, 0.1)) +
@@ -473,8 +477,8 @@ rq2_eq_lextale_patchwork <- rq_2_lextale_by_group + rq_2_eq_by_group
 ggsave(
   filename = here::here("figs", "rq2_eq_lextale_patchwork.png"),
   plot = rq2_eq_lextale_patchwork,
-  width = 8,
-  height = 6,
+  width = 15,
+  height = 10,
   dpi = 300
 )
 
@@ -515,14 +519,14 @@ rq2_lt_eq_3way <- conditional_effects(m_rq2,
 )
 
 rq2_3way <- plot(rq2_lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] +
-  aes(color = factor(eq_std)) +
-  geom_line(aes(group = effect2__), size = 2) +
+  geom_line(aes(group = effect2__), size = 2, 
+            color = rep(viridis::viridis_pal(option = "B", end = 0.8)(3), each = 100, times = 2)) +
   coord_cartesian(xlim = c(-1, 4.2), ylim = c(0, 1)) +
   scale_x_continuous(expand = c(0, 0)) +
   geom_hline(yintercept = 0.5, lty = 3) +
   scale_color_manual(
     name = "Empathy quotient",
-    values = viridis::viridis_pal(option = "B", end = 0.8)(3)
+    values = alpha(viridis::viridis_pal(option = "B", end = 0.8)(3), .1)
   ) +
   labs(y = "P(correct)", x = "LexTALE score") +
   ds4ling::ds4ling_bw_theme(base_size = 13) +
@@ -539,8 +543,8 @@ rq2_3way <- plot(rq2_lt_eq_3way, plot = FALSE, line_args = list(size = 5))[[1]] 
 ggsave(
   filename = here::here("figs", "rq2_3way.png"),
   plot = rq2_3way,
-  width = 8,
-  height = 6,
+  width = 15,
+  height = 10,
   dpi = 300
 )
 

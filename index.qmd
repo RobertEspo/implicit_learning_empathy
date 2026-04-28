@@ -96,6 +96,10 @@ present study
 :::
 :::
 
+##
+
+![](figs/slides_only/l2_intonation.mp4)
+
 ## Intonation
 
 - Modulation of [fundamental frequency]{.emph} (F0) across an utterance
@@ -147,7 +151,7 @@ In [L1 EN L2 ES learners]{.emph}, empathy predicts [more accurate]{.emph} percep
 
 ::: {.absolute top="70" left="-25%"}
 <div style="text-align:center; width:100%;">
-  <audio controls style="width: 100%;">
+  <audio controls style="width: 500px;">
     <source src="figs/slides_only/spain_statement.mp3" type="audio/mpeg">
   </audio>
 
@@ -161,7 +165,7 @@ In [L1 EN L2 ES learners]{.emph}, empathy predicts [more accurate]{.emph} percep
 
 ::: {.absolute top="70" right="-25%"}
 <div style="text-align:center; width:100%;">
-  <audio controls style="width: 100%;">
+  <audio controls style="width: 500px;">
     <source src="figs/slides_only/spain_yn_question.mp3" type="audio/mpeg">
   </audio>
 
@@ -185,10 +189,11 @@ First pitch peak, presence of medial pitch accent, nuclear pitch accent, and bou
 :::
 
 ## Statement or Question?
-
-<audio controls style="width: 80%;">
+<center>
+<audio controls style="width: 500px;">
   <source src="figs/slides_only/venezuela_yn_question.mp3" type="audio/mpeg">
 </audio>
+</center>
 
 ::: footer
 @aguilar2024sptobi
@@ -197,9 +202,9 @@ First pitch peak, presence of medial pitch accent, nuclear pitch accent, and bou
 
 ## Statement or Question?
 
-::: {.absolute top="70" left="-25%"}
+<center>
 <div style="text-align:center; width:100%;">
-  <audio controls style="width: 100%;">
+  <audio controls style="width: 500px;">
     <source src="figs/slides_only/venezuela_yn_question.mp3" type="audio/mpeg">
   </audio>
 
@@ -208,7 +213,7 @@ First pitch peak, presence of medial pitch accent, nuclear pitch accent, and bou
   <img src="figs/slides_only/venezuela_yn_question.png" 
        style="height: 400px; width: auto;">
 </div>
-:::
+</center>
 
 ::: footer
 @aguilar2024sptobi
@@ -277,13 +282,18 @@ but most learners seem to be acquiring intonation via incidental learning [@huls
 
 - Most L2 models [omit]{.emphasis} suprasegmental features [@flege2021revised; @van2015learning; @best2007nonnative]
 
-- L2 Intonation Learning theory [LILt; @mennen2015beyond] predicts L2 difficulty based on...
+- L2 Intonation Learning theory (LILt) predicts L2 difficulty based on...
   1. the inventory and distribution of categorical phonological elements
   2. the phonetic implementation of those elements
   3. the functionality of the elements
   4. the frequency of use of each element
 
 But so far, ignores proficiency, experience, and individual differences
+
+::: footer
+@mennen2015beyond
+
+:::
 
 ## LILt Predictions {.smaller}
 
@@ -294,12 +304,11 @@ But so far, ignores proficiency, experience, and individual differences
    - Phonetically similar across languages
 
 3. **Function**
-   - Spanish: L% → neutral yes-no questions  
-   - American English: H% → neutral yes-no questions
-   - American English: L% used, but associated with disingenuous question [@hedberg2017meaning]
+   - (Caribbean) Spanish: neutral yes-no questions , broad /narrow focus statement, wh- questions, imperatives... [@armstrong2010puerto]
+   - American English: disingenuous yes-no question [@hedberg2017meaning], contrasts with H% in not being directional [@pierrehumbert1990meaning]
 
 4. **Frequency**
-   - How often are these forms encountered... and by who?
+   - How often and by whom are these forms encountered?
    
 ## LILt Predictions & Beyond
 
@@ -462,7 +471,7 @@ ft_rq2
 
 ## Exposure Sesssions
 
-- Exposed to three naturalistic phone conversations between two speakers
+- Exposed to three naturalistic phone conversations between two speakers of each variety:
   - Dominican
   - Puerto Rican
   - Galician 
@@ -546,11 +555,11 @@ eq_table_ft <- flextable(eq_table) %>%
 eq_table_ft
 ```
 
-## Procedure
+## Sample Trial of 2AFC
 
-::: {.absolute top="70"}
+<center>
 <div style="text-align:center; width:100%;">
-  <audio controls style="width: 100%;">
+  <audio controls style="width: 500px;">
     <source src="stimuli/wavs_all/puertorican_match_interrogative-total-yn_Daniel-iba-a-Bolivia.wav" type="audio/mpeg">
   </audio>
 
@@ -558,7 +567,28 @@ eq_table_ft
 
   Is this a question?
 </div>
+</center>
+
+<br>
+
+::: {.absolute top="500" left="0"}
+No
+
 :::
+
+::: {.absolute top="500" right="0"}
+Yes
+
+:::
+
+## Procedure
+
+- Exposure task (only for Exposure group)
+- 2AFC practice
+- 2AFC
+- LexTALE practice
+- LexTALE
+- Empathy Quotient
 
 ## Statistical Analysis {.smaller}
 
@@ -578,7 +608,9 @@ eq_table_ft
 
 # Results {.transition}
 
-## RQ1
+## 
+
+RQ1: Does accuracy change with [proficiency]{.emph} &/or [empathy]{.emph}?
 
 ```{r}
 #| label: fig-m-rq1-eq-lextale
@@ -593,7 +625,25 @@ LexTALE has no effect.
 Empathy has an effect for Falling-Q declarative AND both Rising-Q sentence types.
 :::
 
-## RQ1
+## RQ1: Empathy
+
+```{r}
+#| label: tbl-rq1-empathy-effect
+#| echo: false
+
+rq1_eq_estimates_ft <- flextable(rq1_eq_estimates) %>%
+  colformat_double(digits = 2) %>%
+  align(align = "center", part = "all") %>%
+  bold(part = "header") %>%
+  autofit()
+
+rq1_eq_estimates_ft
+
+```
+
+## 
+
+RQ1: Is there a [proficiency x empathy]{.emph} interaction?
 
 ```{r}
 #| label: fig-m-rq1-3way-interaction
@@ -610,7 +660,25 @@ Caribbean yn & declarative: as proficiency increases, empathy effect is stronger
 
 :::
 
-## RQ2
+## RQ1: Proficiency x Empathy
+
+```{r}
+#| label: tbl-rq1-prof-eq-interaction
+#| echo: false
+
+rq1_lex_eq_estimates_ft <- flextable(rq1_lex_eq_estimates) %>%
+  colformat_double(digits = 2) %>%
+  align(align = "center", part = "all") %>%
+  bold(part = "header") %>%
+  autofit()
+
+rq1_lex_eq_estimates_ft
+
+```
+
+## 
+
+RQ2: Does accuracy change with [proficiency]{.emph} &/or [empathy]{.emph}?
 
 ```{r}
 #| label: fig-m-rq2-lextale-eq
@@ -623,11 +691,29 @@ knitr::include_graphics(
 
 ::: notes
 Equal positive effects for lextale.
-No effect of empathy.
+No effect of empathy, but notice that the effect sizes are really similar.
 
 :::
 
-## RQ2
+## RQ2: Empathy and Proficiency
+
+```{r}
+#| label: tbl-rq2-prof-effect
+#| echo: false
+
+rq2_posterior_lex_eq_summary_ft <- flextable(rq2_posterior_lex_eq_summary) %>%
+  colformat_double(digits = 2) %>%
+  align(align = "center", part = "all") %>%
+  bold(part = "header") %>%
+  autofit()
+
+rq2_posterior_lex_eq_summary_ft
+
+```
+
+## 
+
+RQ2: Is there a [proficiency x empathy]{.emph} interaction?
 
 ```{r}
 #| label: fig-m-rq2-3way-interaction
@@ -643,7 +729,23 @@ For control group, there's no interaction between lextale & empathy.
 For experimental group, there seems to be evidence for a very, very weak, unstable interaction, such that as proficiency increases, the empathy effect gets stronger.
 :::
 
-## Interaction: Proficiency × Empathy
+## RQ2 Interaction: Proficiency × Empathy
+
+```{r}
+#| label: tbl-rq2-interaction
+#| echo: false
+
+rq2_lex_eq_estimates_ft <- flextable(rq2_lex_eq_estimates) %>%
+  colformat_double(digits = 2) %>%
+  align(align = "center", part = "all") %>%
+  bold(part = "header") %>%
+  autofit()
+
+rq2_lex_eq_estimates_ft
+
+```
+
+## RQ2 Interaction: Proficiency × Empathy
 
 - Proficiency held high: +4 SD (`r specify_decimal((4 * sd(rq2$lextale_tra) + mean(rq2$lextale_tra)),2)`; intermediate to advanced learners) 
 - Empathy varied
@@ -679,16 +781,34 @@ For experimental group, there seems to be evidence for a very, very weak, unstab
 
 :::
 
+## Proficiency
+
+- Proficiency alone, as measured by the LexTALE, was not a strong predictor
+- Contradicts a lot of previous research about acquisition of intonation [@nibert2006acquisition; @brandl2020development; @zarate2015perception; @casillas2023using], but only @casillas2023using used LexTALE
+  - Maybe vocab size isn't good proxy of acquisition of intonation?
+  - Maybe my sample included too many low-proficiency participants?
+
+::: notes
+The fun idea, of course, is that vocab size isn't a good predictor, but something else is e.g., exposure to spoken language.
+
+:::
+
 ## Empathy {.smaller}
 
 ::: incremental
-- [Empathy]{.emph} alone predicts higher accuracy falling-question declaratives & rising-question varieties
+- Empathy alone predicts higher accuracy for falling-Q variety declaratives & rising-Q varieties
 - [Empathy by proficiency]{.emph} interaction:
   - As learner's proficiency increases, EQ becomes more influential
 - @casillas2023using reports an [empathy by proficiency]{.emph} effect, but it was different
   - Empathy had more impact at [lower]{.emph} proficiency levels, not higher
   - The effect did not exist for yes-no questions
   - There was no main effect of empathy
+
+:::
+
+::: notes
+Casillas et al. (2023) got Type 1 error?
+I got Type 2 error?
 
 :::
 
@@ -703,7 +823,7 @@ For experimental group, there seems to be evidence for a very, very weak, unstab
 
 # Future Direction {.transition}
 
-##
+## L2 learning
 
 ::: fragment
 - What are L1 En L2 Sp paying attention to when determining if utterance is yes-no question?
@@ -712,20 +832,42 @@ For experimental group, there seems to be evidence for a very, very weak, unstab
 :::
 
 ::: fragment
+- What effect does exposure to multiple dialects have on acquisition of sentence modality?
+
+:::
+
+::: fragment
+- Does incorporation of explicit learning methods speed up acquisition of sentence modality?
+  - How do we incorporate dialectal variation?
+
+:::
+
+::: notes
+Seems unlikely because they aren't constrained to the boundary tone in English.
+
+:::
+
+## Empathy {.smaller}
+
+::: fragment
 - Why disparate results between this and @casillas2023using?
+  - Maybe @casillas2023using has type 1 error or I have Type 2 error?
+  - The effect size for EQ on rising-Q variety absolute interrogatives was weak
+  - The effect size for Exposure x EQ x Proficiency was even weaker
 
 ::: 
 
 ::: fragment
 
 - Investigate other many-to-many mappings in linguistics in relation to empathy
-  - e.g. dialectal contact phonemena, L2 learning of dialectal variation, study abroad vs domestic learning
+  - dialectal contact phenomena
+  - study abroad vs domestic learning
+  - segmental variation: e.g., perception of /s/ aspiration/deletion
 
 :::
 
 ::: notes
-1. seems unlikely because they aren't constrained to that in english.
-3. mention segmentals
+/s/ because it is fairly salient & restricted to specific dialects.
 
 :::
 

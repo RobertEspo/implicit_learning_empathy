@@ -26,7 +26,7 @@ simp_y_labs <- c(
 
 simp_labs_tib <- tibble(
   y = simp_y_labs,
-  x = -3.5
+  x = -4.75
 ) %>%
   mutate(y = fct_relevel(
     y,
@@ -92,10 +92,10 @@ m_rq1_forest_bw <- as_tibble(m_rq1) %>%
                           "LexTALE × EQ × Absolute interrogative × Falling-Q variety")
   ) %>%
   ggplot(., aes(x = Estimate, y = Parameter)) + 
-  coord_cartesian(xlim = c(-4, .6)) + 
+  coord_cartesian(xlim = c(-5, .6)) + 
   scale_x_continuous(expand = c(0, 0)) + 
   geom_vline(xintercept = 0, lty = 3) + 
-  geom_text(data = simp_labs_tib, hjust = 0, vjust = 0.5, size = 4, 
+  geom_text(data = simp_labs_tib, hjust = 0, vjust = 0.5, size = 2.25, 
             aes(y = y, x = x, label = y), family = "Times") + 
   stat_halfeye(slab_alpha = 0.5, pch = 21, point_fill = "white", 
                point_size = 1.5) + 
@@ -350,7 +350,7 @@ simp_y_labs <- c(
 
 simp_labs_tib <- tibble(
   y = simp_y_labs,
-  x = -1.5
+  x = -2.5
 ) %>%
   mutate(y = fct_relevel(
     y,
@@ -389,10 +389,10 @@ m_rq2_forest_bw <- as_tibble(m_rq2) %>%
                           'LexTALE × EQ × Exposure group')
   ) %>%
   ggplot(., aes(x = Estimate, y = Parameter)) + 
-  coord_cartesian(xlim = c(-1.75, 1.01)) + 
+  coord_cartesian(xlim = c(-2.75, 1.01)) + 
   scale_x_continuous(expand = c(0, 0)) + 
   geom_vline(xintercept = 0, lty = 3) + 
-  geom_text(data = simp_labs_tib, hjust = 0, vjust = 0.5, size = 4, 
+  geom_text(data = simp_labs_tib, hjust = 0, vjust = 0.5, size = 2.25, 
             aes(y = y, x = x, label = y), family = "Times") + 
   stat_halfeye(slab_alpha = 0.5, pch = 21, point_fill = "white", 
                point_size = 1.5) + 
@@ -706,46 +706,3 @@ ggsave(
   height = 6,
   dpi = 300
 )
-
-
-
-
-
-
-
-
-
-
-
-
-rq2_3way_bw <- plot(rq2_lt_eq_3way, plot = FALSE, line_args = list(size = 1.5))[[1]] +
-  aes(linetype = factor(eq_std)) +
-  geom_line(
-    aes(group = interaction(effect2__, eq_std)),
-    color = "black",
-    size = 1.5
-  ) +
-  scale_fill_manual(values = c("white","white","white")) +
-  scale_linetype_manual(
-    name = "Empathy quotient",
-    values = c("-1" = "twodash", "0" = "dashed", "1" = "solid")
-  ) +
-  scale_x_continuous(expand = c(0, 0), limits = c(-2.1, 4.1)) +
-  coord_cartesian(ylim = c(0, 1)) +
-  geom_hline(yintercept = 0.5, lty = 3) +
-  labs(y = "P(correct)", x = "LexTALE score") +
-  ds4ling::ds4ling_bw_theme(base_size = 12) +
-  theme(
-    legend.position = c(0.98, 0.98),
-    legend.justification = c("right", "top"),
-    legend.background = element_blank(),
-    legend.key = element_blank()
-  ) +
-  guides(
-    fill = "none",
-    color = "none",
-    linetype = guide_legend(
-      nrow = 1,
-      override.aes = list(
-        color = "black",
-        size = 5)))
