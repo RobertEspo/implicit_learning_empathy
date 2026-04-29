@@ -64,6 +64,10 @@ theme_set(theme_grey(base_size = 30))
 
 </center>
 
+##
+
+![](figs/slides_only/l2_intonation.mp4)
+
 # Roadmap {.transition}
 
 ::: {.fragment .fade-up}
@@ -95,10 +99,6 @@ modeling of L2 intonation
 present study
 :::
 :::
-
-##
-
-![](figs/slides_only/l2_intonation.mp4)
 
 ## Intonation
 
@@ -469,7 +469,16 @@ ft_rq2 <- add_header_row(
 ft_rq2
 ```
 
-## Exposure Sesssions
+## Procedure
+
+- Exposure task (only for Exposure group)
+- 2AFC practice
+- 2AFC
+- LexTALE practice
+- LexTALE
+- Empathy Quotient
+
+## Exposure Task
 
 - Exposed to three naturalistic phone conversations between two speakers of each variety:
   - Dominican
@@ -580,15 +589,6 @@ No
 Yes
 
 :::
-
-## Procedure
-
-- Exposure task (only for Exposure group)
-- 2AFC practice
-- 2AFC
-- LexTALE practice
-- LexTALE
-- Empathy Quotient
 
 ## Statistical Analysis {.smaller}
 
